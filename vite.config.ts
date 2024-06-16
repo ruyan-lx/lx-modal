@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  esbuild: {
+    charset: 'ascii'
+  },
   build: {
     outDir: "lx-modal", //输出文件名称
     lib: {
@@ -23,4 +27,9 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+      alias: {
+          '@': path.resolve(__dirname, 'src')
+      }
+  }
 })

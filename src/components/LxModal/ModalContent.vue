@@ -1,31 +1,22 @@
 <template>
         <div :id="modalID" class="modal-content">
-        <div :id="draggableDOMID" class="modal-header" draggable="true">
+        <div :id="draggableDOMID" class="modal-header" draggable="true" style="height: auto;">
             <div class="modal-header-left">
                 <slot name="header"><span class="modal-header-left-title">{{ title }}</span></slot>
             </div>
             <div class="modal-header-right" >
                 <div class="modal-header-right-btn" @click="$emit('update:modalShow',false)">
-                    <svg class="icon" aria-hidden="true">
-                         <use xlink:href="#icon-zuixiaohua"></use>
-                    </svg>
+                    ㇐
                 </div>
                 <div class="modal-header-right-btn" @click="toggleFullScreen">
-                    <svg v-if="isFullScreen" class="icon" aria-hidden="true">
-                         <use xlink:href="#icon-zuidahua"></use>
-                    </svg>
-                    <svg v-else class="icon" aria-hidden="true">
-                         <use xlink:href="#icon-zuidahua1"></use>
-                    </svg>
+                    ▢
                 </div>
                 <div class="modal-header-right-btn" @click="closeModal('close')">
-                    <svg class="icon" aria-hidden="true">
-                         <use xlink:href="#icon-guanbi"></use>
-                    </svg>
+                    ⨉
                 </div>
             </div>
         </div>
-        <div :id="resizeDOMID" class="modal-body" :style:any="{  width: `${width}px`, height: `${height}px` ,resize: resize }">
+        <div :id="resizeDOMID" class="modal-body" :style="`width: ${width}px; height: ${height}px ;resize: ${resize}`">
             <slot></slot>
         </div>
         <slot name="footer">
@@ -39,7 +30,6 @@
 
 <script setup lang="ts">
     import { getCurrentInstance, onMounted,  ref } from "vue";
-
 
     const props =  defineProps({
             id:{
@@ -100,36 +90,44 @@
         const draggableDOMID = `draggableDOMPoint-${uniqueId.value}`
         const resizeDOMID = `resizeDOM-${uniqueId.value}`
         const isFullScreen = ref(false)
+        // 最大化最小化
         function toggleFullScreen() {
-            let draggableDOM = document.getElementById(modalID);
-            const resizeDOM = document.getElementById(resizeDOMID);
-            if(!isFullScreen.value){
-                document.body.style.overflow = 'hidden';
-                draggableDOM!.style.transform = `translate(0px,0px)`;
-                // draggableDOM!.style.width =  '100vw'
-                draggableDOM!.style.height = '100vh'
-                requestAnimationFrame(()=>{
+            requestAnimationFrame(()=>{
+                let draggableDOM = document.getElementById(modalID);
+                const resizeDOM = document.getElementById(resizeDOMID);
+                if(!isFullScreen.value){
+                    document.body.style.overflow = 'hidden';
+                    draggableDOM!.style.transform = `translate(0px,0px)`;
+                    draggableDOM!.style.width =  '100vw'
+                    draggableDOM!.style.height = '100vh'
                     resizeDOM!.style.width = '100vw'
                     resizeDOM!.style.resize = 'none';
-                })
-                isFullScreen.value = true
-            }else{
-                requestAnimationFrame(() => {
+                    isFullScreen.value = true
+                }else{
                     document.body.style.overflow = 'auto';
                     resizeDOM!.style.width = props.width+'px'
                     resizeDOM!.style.height = props.height+'px'
                     draggableDOM!.style.width ='inherit'
                     draggableDOM!.style.height = 'inherit'
                     draggableDOM!.style.transform = `translate(${document.documentElement.clientWidth/2-draggableDOM!.offsetWidth/2}px,${document.documentElement.clientHeight/2-draggableDOM!.offsetHeight/2}px)`;
-                });
-                isFullScreen.value = false
-            }
-        }
+                    resizeDOM!.style.resize = props.resize;
+                    isFullScreen.value = false
+                }
+            });
+    }
 
         function closeModal(type: string) {
-            Instance?.appContext.config.globalProperties.unmountModal()
-            console.log('==type==',type);
-            
+            switch (type) {
+                case 'cancel':
+                case 'close':
+                case 'submit':
+                    {
+                        Instance?.appContext.config.globalProperties.unmountModal()
+                    }
+                    break;
+                default:
+                    break;
+            }
         };
 
         // 提交前的狗子，不是函数则直接关闭，是函数：限制性狗子函数，再返回false就不处理，返回其他值则关闭；
@@ -163,7 +161,7 @@
             draggableDOMPoint?.addEventListener("dragstart", (event:any) => {
                 if(event.target!.id !== draggableDOMID && !draggableDOM) return
                 dragEvent = event;
-                draggableDOM!.style.opacity = '.7'
+                draggableDOM!.style.opacity = '.92'
             });
 
             document?.addEventListener("dragover", (event:any) => {
@@ -187,7 +185,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .modal-content {
         position: absolute;
         background-color: #fff;

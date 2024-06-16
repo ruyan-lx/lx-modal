@@ -60,17 +60,30 @@
   </div>
 </template>
 <script setup lang="ts">
+import { h } from 'vue';
+import { openModal } from './components/LxModal';
+
 // import {openModal} from 'lx-modal'
 
 function openModalFun() {
-  // openModal(
-  //   123,
-  //   {
-  //     showMask: true
-  //   }
-  // ).then((data:any)=>{
-  //     console.log('==打开成功==',data);
-  //   })
+  openModal(
+    h('div',null,[
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+      h('p',null,'123'),
+    ]),
+    {
+    }
+  ).then((data:any)=>{
+      console.log('==打开成功==',data);
+    })
   }
   
 </script>
