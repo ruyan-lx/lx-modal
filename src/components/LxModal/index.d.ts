@@ -1,2 +1,4 @@
-declare const openModal: (component:any,props:{[k:string]:any}) => any;
+import { Component } from "vue";
+
+declare const openModal: (component:string | Component,props: object | null) => Promise<any>;
 export default openModal;

@@ -1,21 +1,7 @@
 {
   "name": "lx-modal",
-  "author": "ruyan-lx",
-  "description": "一个基于vue3开发的函数式弹窗组件",
-  "private": false,
-  "version": "0.0.1",
-  "commonjs": "commonjs",
-  "main": "./src/components/index.ts",
-  "module": "./src/components/index.ts",
-  "types": "./src/components/index.d.ts",
-  "license": "MIT",
-  "keywords": [
-    "弹窗",
-    "vue3",
-    "vite",
-    "lx-modal",
-    "函数式组件"
-  ],
+  "author": "",
+  "private": true, 
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",

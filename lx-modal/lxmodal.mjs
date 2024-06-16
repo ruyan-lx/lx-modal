@@ -1,34 +1,34 @@
-import { defineComponent as b, getCurrentInstance as C, ref as y, onMounted as q, openBlock as _, createElementBlock as p, createElementVNode as o, renderSlot as W, toDisplayString as E, createCommentVNode as N, pushScopeId as O, popScopeId as F, withDirectives as M, vShow as w, createVNode as L, mergeProps as V, withCtx as A, createApp as U, h as k, Fragment as X, createTextVNode as u } from "vue";
-const v = (n) => (O("data-v-9b85fced"), n = n(), F(), n), Y = { class: "modal-header-left" }, T = { class: "modal-header-left-title" }, j = { class: "modal-header-right" }, G = /* @__PURE__ */ v(() => /* @__PURE__ */ o("svg", {
+import { defineComponent as C, getCurrentInstance as E, ref as b, onMounted as H, openBlock as h, createElementBlock as p, createElementVNode as l, renderSlot as v, toDisplayString as q, createCommentVNode as O, pushScopeId as W, popScopeId as N, withDirectives as w, vShow as k, createVNode as F, mergeProps as L, withCtx as A, createApp as V, h as $ } from "vue";
+const M = (n) => (W("data-v-9b85fced"), n = n(), N(), n), U = { class: "modal-header-left" }, X = { class: "modal-header-left-title" }, Y = { class: "modal-header-right" }, j = /* @__PURE__ */ M(() => /* @__PURE__ */ l("svg", {
   class: "icon",
   "aria-hidden": "true"
 }, [
-  /* @__PURE__ */ o("use", { "xlink:href": "#icon-zuixiaohua" })
-], -1)), J = [
-  G
-], K = {
+  /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuixiaohua" })
+], -1)), G = [
+  j
+], J = {
   key: 0,
   class: "icon",
   "aria-hidden": "true"
-}, Q = /* @__PURE__ */ v(() => /* @__PURE__ */ o("use", { "xlink:href": "#icon-zuidahua" }, null, -1)), R = [
-  Q
-], Z = {
+}, K = /* @__PURE__ */ M(() => /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuidahua" }, null, -1)), Q = [
+  K
+], R = {
   key: 1,
   class: "icon",
   "aria-hidden": "true"
-}, oo = /* @__PURE__ */ v(() => /* @__PURE__ */ o("use", { "xlink:href": "#icon-zuidahua1" }, null, -1)), eo = [
-  oo
-], to = /* @__PURE__ */ v(() => /* @__PURE__ */ o("svg", {
+}, T = /* @__PURE__ */ M(() => /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuidahua1" }, null, -1)), Z = [
+  T
+], ee = /* @__PURE__ */ M(() => /* @__PURE__ */ l("svg", {
   class: "icon",
   "aria-hidden": "true"
 }, [
-  /* @__PURE__ */ o("use", { "xlink:href": "#icon-guanbi" })
-], -1)), lo = [
-  to
-], no = ["style:any"], so = {
+  /* @__PURE__ */ l("use", { "xlink:href": "#icon-guanbi" })
+], -1)), te = [
+  ee
+], oe = ["style:any"], ne = {
   key: 0,
   class: "modal-footer"
-}, io = /* @__PURE__ */ b({
+}, le = /* @__PURE__ */ C({
   __name: "ModalContent",
   props: {
     id: {
@@ -78,15 +78,15 @@ const v = (n) => (O("data-v-9b85fced"), n = n(), F(), n), Y = { class: "modal-he
     }
   },
   emits: ["update:modalShow"],
-  setup(n, { expose: a }) {
-    const i = n, t = C(), s = y(t == null ? void 0 : t.appContext.config.globalProperties.uniqueId), d = `draggableDOM-${s.value}`, h = `draggableDOMPoint-${s.value}`, c = `resizeDOM-${s.value}`, f = y(!1);
+  setup(n, { expose: d }) {
+    const i = n, t = E(), a = b(t == null ? void 0 : t.appContext.config.globalProperties.uniqueId), s = `draggableDOM-${a.value}`, m = `draggableDOMPoint-${a.value}`, r = `resizeDOM-${a.value}`, f = b(!1);
     function S() {
-      let e = document.getElementById(d);
-      const l = document.getElementById(c);
+      let e = document.getElementById(s);
+      const o = document.getElementById(r);
       f.value ? (requestAnimationFrame(() => {
-        document.body.style.overflow = "auto", l.style.width = i.width + "px", l.style.height = i.height + "px", e.style.width = "inherit", e.style.height = "inherit", e.style.transform = `translate(${document.documentElement.clientWidth / 2 - e.offsetWidth / 2}px,${document.documentElement.clientHeight / 2 - e.offsetHeight / 2}px)`;
+        document.body.style.overflow = "auto", o.style.width = i.width + "px", o.style.height = i.height + "px", e.style.width = "inherit", e.style.height = "inherit", e.style.transform = `translate(${document.documentElement.clientWidth / 2 - e.offsetWidth / 2}px,${document.documentElement.clientHeight / 2 - e.offsetHeight / 2}px)`;
       }), f.value = !1) : (document.body.style.overflow = "hidden", e.style.transform = "translate(0px,0px)", e.style.height = "100vh", requestAnimationFrame(() => {
-        l.style.width = "100vw", l.style.resize = "none";
+        o.style.width = "100vw", o.style.resize = "none";
       }), f.value = !0);
     }
     function g(e) {
@@ -100,75 +100,75 @@ const v = (n) => (O("data-v-9b85fced"), n = n(), F(), n), Y = { class: "modal-he
           return g("submit");
       });
     }
-    q(() => {
+    H(() => {
       D();
     });
     function D() {
       let e = null;
-      const l = document.getElementById(d);
-      let r = document.getElementById(h);
-      const $ = t == null ? void 0 : t.appContext.config.globalProperties.modalIndex, x = {
-        x: 5 * $,
-        y: 5 * $
+      const o = document.getElementById(s);
+      let u = document.getElementById(m);
+      const _ = t == null ? void 0 : t.appContext.config.globalProperties.modalIndex, x = {
+        x: 5 * _,
+        y: 5 * _
       };
-      l.style.transform = `translate(${document.documentElement.clientWidth / 2 - l.offsetWidth / 2 + x.x}px,${document.documentElement.clientHeight / 2 - l.offsetHeight / 2 + x.y}px)`, r == null || r.addEventListener("dragstart", (m) => {
-        m.target.id !== h && !l || (e = m, l.style.opacity = ".7");
-      }), document == null || document.addEventListener("dragover", (m) => {
-        if (m.target.id !== h && !e)
+      o.style.transform = `translate(${document.documentElement.clientWidth / 2 - o.offsetWidth / 2 + x.x}px,${document.documentElement.clientHeight / 2 - o.offsetHeight / 2 + x.y}px)`, u == null || u.addEventListener("dragstart", (c) => {
+        c.target.id !== m && !o || (e = c, o.style.opacity = ".7");
+      }), document == null || document.addEventListener("dragover", (c) => {
+        if (c.target.id !== m && !e)
           return;
         const z = window.innerHeight - e.target.offsetHeight, P = window.innerWidth - e.target.offsetWidth;
-        l.style.transform = `translate(${Math.min(Math.max(0, m.clientX - e.offsetX), P)}px,${Math.min(Math.max(0, m.clientY - e.offsetY), z)}px)`, m.preventDefault();
-      }), l == null || l.addEventListener("drop", () => {
-        e = null, r = null, l.style.opacity = "1";
+        o.style.transform = `translate(${Math.min(Math.max(0, c.clientX - e.offsetX), P)}px,${Math.min(Math.max(0, c.clientY - e.offsetY), z)}px)`, c.preventDefault();
+      }), o == null || o.addEventListener("drop", () => {
+        e = null, u = null, o.style.opacity = "1";
       });
     }
-    return a({
-      uniqueId: s
-    }), (e, l) => (_(), p("div", {
-      id: d,
+    return d({
+      uniqueId: a
+    }), (e, o) => (h(), p("div", {
+      id: s,
       class: "modal-content"
     }, [
-      o("div", {
-        id: h,
+      l("div", {
+        id: m,
         class: "modal-header",
         draggable: "true"
       }, [
-        o("div", Y, [
-          W(e.$slots, "header", {}, () => [
-            o("span", T, E(n.title), 1)
+        l("div", U, [
+          v(e.$slots, "header", {}, () => [
+            l("span", X, q(n.title), 1)
           ], !0)
         ]),
-        o("div", j, [
-          o("div", {
+        l("div", Y, [
+          l("div", {
             class: "modal-header-right-btn",
-            onClick: l[0] || (l[0] = (r) => e.$emit("update:modalShow", !1))
-          }, J),
-          o("div", {
+            onClick: o[0] || (o[0] = (u) => e.$emit("update:modalShow", !1))
+          }, G),
+          l("div", {
             class: "modal-header-right-btn",
             onClick: S
           }, [
-            f.value ? (_(), p("svg", K, R)) : (_(), p("svg", Z, eo))
+            f.value ? (h(), p("svg", J, Q)) : (h(), p("svg", R, Z))
           ]),
-          o("div", {
+          l("div", {
             class: "modal-header-right-btn",
-            onClick: l[1] || (l[1] = (r) => g("close"))
-          }, lo)
+            onClick: o[1] || (o[1] = (u) => g("close"))
+          }, te)
         ])
       ]),
-      o("div", {
-        id: c,
+      l("div", {
+        id: r,
         class: "modal-body",
         "style:any": { width: `${n.width}px`, height: `${n.height}px`, resize: n.resize }
       }, [
-        W(e.$slots, "default", {}, void 0, !0)
-      ], 8, no),
-      W(e.$slots, "footer", {}, () => [
-        n.footerHide ? N("", !0) : (_(), p("div", so, [
-          o("button", {
+        v(e.$slots, "default", {}, void 0, !0)
+      ], 8, oe),
+      v(e.$slots, "footer", {}, () => [
+        n.footerHide ? O("", !0) : (h(), p("div", ne, [
+          l("button", {
             class: "modal-button",
-            onClick: l[2] || (l[2] = (r) => g("cancel"))
+            onClick: o[2] || (o[2] = (u) => g("cancel"))
           }, "取消"),
-          o("button", {
+          l("button", {
             class: "modal-button modal-button-primary",
             onClick: B
           }, "提交")
@@ -176,12 +176,12 @@ const v = (n) => (O("data-v-9b85fced"), n = n(), F(), n), Y = { class: "modal-he
       ], !0)
     ]));
   }
-}), I = (n, a) => {
+}), I = (n, d) => {
   const i = n.__vccOpts || n;
-  for (const [t, s] of a)
-    i[t] = s;
+  for (const [t, a] of d)
+    i[t] = a;
   return i;
-}, ao = /* @__PURE__ */ I(io, [["__scopeId", "data-v-9b85fced"]]), co = { class: "modal" }, ro = /* @__PURE__ */ b({
+}, ae = /* @__PURE__ */ I(le, [["__scopeId", "data-v-9b85fced"]]), se = { class: "modal" }, ie = /* @__PURE__ */ C({
   __name: "index",
   props: {
     // 能否通过遮罩关闭弹窗
@@ -196,124 +196,58 @@ const v = (n) => (O("data-v-9b85fced"), n = n(), F(), n), Y = { class: "modal-he
     }
   },
   emits: ["close"],
-  setup(n, { emit: a }) {
-    const i = n, t = C();
-    function s() {
+  setup(n, { emit: d }) {
+    const i = n, t = E();
+    function a() {
       i.maskClosable && (t == null || t.appContext.config.globalProperties.unmountModal());
     }
-    const d = y(!0);
-    function h(c) {
-      d.value = c;
+    const s = b(!0);
+    function m(r) {
+      s.value = r;
     }
-    return (c, f) => M((_(), p("div", co, [
-      M(o("div", {
+    return (r, f) => w((h(), p("div", se, [
+      w(l("div", {
         class: "modal-mask",
-        onClick: s
+        onClick: a
       }, null, 512), [
-        [w, n.ModalMaskDisplay]
+        [k, n.ModalMaskDisplay]
       ]),
-      L(ao, V(c.$attrs, { "onUpdate:modalShow": h }), {
+      F(ae, L(r.$attrs, { "onUpdate:modalShow": m }), {
         default: A(() => [
-          W(c.$slots, "default", {}, void 0, !0)
+          v(r.$slots, "default", {}, void 0, !0)
         ]),
         _: 3
       }, 16)
     ], 512)), [
-      [w, d.value]
+      [k, s.value]
     ]);
   }
-}), mo = /* @__PURE__ */ I(ro, [["__scopeId", "data-v-cd541b9d"]]);
-function uo() {
+}), de = /* @__PURE__ */ I(ie, [["__scopeId", "data-v-cd541b9d"]]);
+function re() {
   return Math.random().toString(36).substr(2, 9);
 }
-let H = y(/* @__PURE__ */ new Map());
-function re(n, a) {
+let y = b(/* @__PURE__ */ new Map());
+function ce(n, d) {
   return new Promise((i) => {
-    const t = uo(), s = document.createElement("div");
-    s.id = t, document.body.appendChild(s);
-    const d = U(k(mo, a, [k(n, a)]));
-    d.config.globalProperties.modalIndex = H.value.size, d.config.globalProperties.uniqueId = t, H.value.set(t, d), d.mount(s), d.config.globalProperties.unmountModal = function() {
-      document.body.style.overflow = "auto", H.value.get(t).unmount(), s.remove(), H.value.delete(t);
-    }, i({ uniqueId: t, element: s, app: d });
+    const t = re(), a = document.createElement("div");
+    a.id = t, document.body.appendChild(a);
+    const s = V($(de, d, [$(n, d)]));
+    s.config.globalProperties.modalIndex = y.value.size, s.config.globalProperties.uniqueId = t, y.value.set(t, s), s.mount(a), s.config.globalProperties.unmountModal = function() {
+      document.body.style.overflow = "auto", y.value.get(t).unmount(), a.remove(), y.value.delete(t);
+    }, i({ uniqueId: t, element: a, app: s });
   });
 }
-const ho = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), _o = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), po = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), fo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), go = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Ho = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Wo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), yo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), vo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), bo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), $o = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), xo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Mo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), wo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), ko = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Co = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Eo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Io = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), So = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Bo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Do = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), zo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Po = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), qo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), No = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Oo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Fo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Lo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Vo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Ao = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Uo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Xo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Yo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), To = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), jo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Go = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Jo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Ko = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Qo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Ro = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), Zo = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), oe = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), ee = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), te = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), le = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), ne = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), se = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), de = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), ie = /* @__PURE__ */ o("h1", null, "i am HelloWorld component", -1), ae = /* @__PURE__ */ b({
-  __name: "HelloWorld",
-  props: {
-    msg: {}
-  },
-  setup(n) {
-    return (a, i) => (_(), p(X, null, [
-      o("h1", null, E(a.msg), 1),
-      ho,
-      _o,
-      po,
-      fo,
-      go,
-      Ho,
-      u(),
-      Wo,
-      yo,
-      vo,
-      bo,
-      $o,
-      xo,
-      u(),
-      Mo,
-      wo,
-      ko,
-      Co,
-      Eo,
-      Io,
-      u(),
-      So,
-      Bo,
-      Do,
-      zo,
-      Po,
-      qo,
-      u(),
-      No,
-      Oo,
-      Fo,
-      Lo,
-      Vo,
-      Ao,
-      u(),
-      Uo,
-      Xo,
-      Yo,
-      To,
-      jo,
-      Go,
-      u(),
-      Jo,
-      Ko,
-      Qo,
-      Ro,
-      Zo,
-      oe,
-      u(),
-      ee,
-      te,
-      le,
-      ne,
-      se,
-      de,
-      ie
-    ], 64));
-  }
-}), me = {
+const me = {
   // install(App:any) {
   //     component?.forEach((item:any) => {
   //         App.component(item.name, item);
   //     });
   // },
-  install(n) {
-    n.component("HelloWorld", ae);
-  }
+  // install(app:any) {
+  //     app.component('HelloWorld', HelloWorld);
+  // }
 };
 export {
   me as default,
-  re as openModal
+  ce as openModal
 };
