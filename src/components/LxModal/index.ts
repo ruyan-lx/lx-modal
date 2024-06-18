@@ -1,5 +1,5 @@
 import LxModal from './index.vue'
-import {type Component, h, ref } from "vue";
+import {type Component, type App, h, ref, } from "vue";
 import { createApp } from 'vue'
 
 function generateUniqueId():string {
@@ -8,7 +8,7 @@ function generateUniqueId():string {
 
 export  let ModalInstanceMap =ref(new Map())
 
-export function openModal(slot:string | Component, config:{[k:string]:any}){
+export function openModal(slot:string | Component, config:{[k:string]:any}):Promise<any>{
   return new Promise((resolve) => {
     const uniqueId: string = generateUniqueId()
     const element = document.createElement('div');
@@ -29,5 +29,12 @@ export function openModal(slot:string | Component, config:{[k:string]:any}){
     resolve({uniqueId,element,app})
   })
 }
+
+// 注册组件 
+export default {
+  install:(Vue: App) => {
+    Vue.component("LxModal" as string, LxModal);
+  }
+};
 
 

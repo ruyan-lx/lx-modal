@@ -1,18 +1,17 @@
-import { openModal } from "./LxModal";
+import { openModal ,ModalInstanceMap} from "./LxModal";
+import LxModal from "@/components/LxModal/index.vue";
+import {type App } from "vue";
 
 // 按需引入
-export { openModal };
+export { openModal,ModalInstanceMap,LxModal };
 
-// const component :any= [HelloWorld];
+const components :any= [LxModal];
 
 // 全量引入
 export default {
-    // install(App:any) {
-    //     component?.forEach((item:any) => {
-    //         App.component(item.name, item);
-    //     });
-    // },
-    // install(app:any) {
-    //     app.component('HelloWorld', HelloWorld);
-    // }
+    install(App:App) {
+        components?.forEach((item: any) => {
+            App.component(item.name, item);
+        });
+    }
 };

@@ -27,7 +27,11 @@
         </slot>
     </div>
 </template>
-
+<script lang="ts">
+    export default {
+        name: "ModalContent"
+    };
+</script>
 <script setup lang="ts">
     import { getCurrentInstance, onMounted,  ref } from "vue";
 
@@ -210,7 +214,7 @@
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: baseline;
-        cursor: pointer;
+        cursor: all-scroll;
         &-left{
             margin-left: 5px;
             &-title{

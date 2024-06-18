@@ -6,6 +6,12 @@
             </modal-content>
         </div>
 </template>
+
+<script lang="ts">
+    export default {
+        name: "LxModal"
+    };
+</script>
 <script lang="ts" setup> 
     import { getCurrentInstance, ref } from "vue";
     import ModalContent from "./ModalContent.vue"

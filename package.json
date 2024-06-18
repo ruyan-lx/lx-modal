@@ -1,19 +1,20 @@
 {
   "name": "lx-modal",
   "author": "",
-  "private": true, 
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "lx-modal": "^0.0.1",
+    "lx-modal": "^0.2.27",
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "sass": "^1.77.5",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6"

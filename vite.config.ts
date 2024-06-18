@@ -5,9 +5,14 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  esbuild: {
-    charset: 'ascii'
-  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 这里可以设置全局变量等 SCSS 配置
+        additionalData: '@import "@/assets/scss/globalVar.scss";'
+      },
+    }
+  } ,
   build: {
     outDir: "lx-modal", //输出文件名称
     lib: {
@@ -22,7 +27,7 @@ export default defineConfig({
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          lxmodal: "lxmodal",
+          vue: "vue",
         },
       },
     },
