@@ -1,9 +1,9 @@
-import { openModal, ModalInstanceMap } from './LxModal';
+import { openModal, ModalInstanceMap, closeAllModal } from './LxModal';
 import LxModal from '@/components/LxModal/index.vue';
 import { type App } from 'vue';
 
 // 按需引入
-export { openModal, ModalInstanceMap, LxModal };
+export { openModal, closeAllModal, ModalInstanceMap, LxModal };
 
 const components: any = [LxModal];
 

@@ -1,7 +1,7 @@
 <template>
 	<div class="modal" v-show="modalShow">
-		<div v-show="ModalMaskDisplay" class="modal-mask" @click="maskClose"></div>
-		<modal-content v-bind="$attrs" @update:modalShow="minWinModal">
+		<div v-show="modalMaskDisplay" class="modal-mask" @click="maskClose"></div>
+		<modal-content v-bind="$attrs" @update:modalShow="minShowModal">
 			<slot></slot>
 		</modal-content>
 	</div>
@@ -23,11 +23,12 @@ const props = defineProps({
 		default: true,
 	},
 	// 遮罩
-	ModalMaskDisplay: {
+	modalMaskDisplay: {
 		type: Boolean,
 		default: false,
 	},
 });
+console.log('==props==', props);
 
 const emit = defineEmits(['close']);
 
@@ -41,9 +42,14 @@ function maskClose() {
 
 const modalShow = ref(true);
 
-function minWinModal(value: boolean) {
+// 最小化与显示弹窗
+function minShowModal(value: boolean) {
 	modalShow.value = value;
 }
+
+defineExpose({
+	minShowModal,
+});
 </script>
 
 <style scoped lang="scss">
