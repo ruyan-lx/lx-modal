@@ -28,7 +28,6 @@ const props = defineProps({
 		default: false,
 	},
 });
-console.log('==props==', props);
 
 const emit = defineEmits(['close']);
 

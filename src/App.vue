@@ -39,15 +39,17 @@ function openModalFun() {
 			width: 600,
 			height: 400,
 			title: '弹窗标题',
-			maskClosable: true,
-			modalMaskDisplay: true,
+			// maskClosable: true,
+			// modalMaskDisplay: true,
 		}
 	).then((data: any) => {
-		console.log('==打开成功==', data.app._context.provides.minShowModal);
-		console.log('==ModalInstanceMap==', ModalInstanceMap.value);
+		console.log('==打开成功==', data);
 	});
 }
 
-function showOneModal() {}
+function showOneModal() {
+	console.log('==显示第一个弹窗==');
+	console.log('==ModalInstanceMap==', ModalInstanceMap.value);
+}
 </script>
 <style scoped></style>

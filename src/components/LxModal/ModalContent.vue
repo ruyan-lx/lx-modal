@@ -1,15 +1,30 @@
 <template>
 	<div :id="modalID" class="modal-content">
-		<div :id="draggableDOMID" class="modal-header" draggable="true" style="height: auto">
+		<div :id="draggableDOMID" class="modal-header" draggable="true">
 			<div class="modal-header-left">
 				<slot name="header">
 					<span class="modal-header-left-title">{{ title }}</span>
 				</slot>
 			</div>
 			<div class="modal-header-right">
-				<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">㇐</div>
-				<div class="modal-header-right-btn" @click="toggleFullScreen">▢</div>
-				<div class="modal-header-right-btn" @click="closeModal('close')">⨉</div>
+				<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-zuixiaohua"></use>
+					</svg>
+				</div>
+				<div class="modal-header-right-btn" @click="toggleFullScreen">
+					<svg v-if="isFullScreen" class="icon" aria-hidden="true">
+						<use xlink:href="#icon-zuidahua"></use>
+					</svg>
+					<svg v-else class="icon" aria-hidden="true">
+						<use xlink:href="#icon-zuidahua1"></use>
+					</svg>
+				</div>
+				<div class="modal-header-right-btn" @click="closeModal('close')">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-guanbi"></use>
+					</svg>
+				</div>
 			</div>
 		</div>
 		<div :id="resizeDOMID" class="modal-body" :style="`width: ${width}px; height: ${height}px ;resize: ${resize ? 'auto' : 'none'}`">
@@ -199,6 +214,13 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
+.icon {
+	width: 1.3em;
+	height: 1.3em;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
+}
 .modal-content {
 	position: absolute;
 	background-color: #fff;
@@ -214,6 +236,7 @@ defineExpose({
 	align-items: stretch;
 }
 .modal-header {
+	line-height: 2rem;
 	border-top-right-radius: inherit;
 	border-top-left-radius: inherit;
 	border-top: 1px solid #e4e7ed;
@@ -222,7 +245,7 @@ defineExpose({
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: center;
 	cursor: all-scroll;
 	&-left {
 		margin-left: 5px;
@@ -244,7 +267,7 @@ defineExpose({
 		height: inherit;
 		&-btn {
 			cursor: pointer;
-			width: 24px;
+			width: 2rem;
 			height: inherit;
 			border-left: 1px solid #e4e7ed;
 			text-align: center;
