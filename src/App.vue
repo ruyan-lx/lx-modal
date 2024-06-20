@@ -1,7 +1,7 @@
 <template>
 	<button @click="openModalFun">打开弹窗</button>
 	<button @click="closeAllModal">关闭所有弹窗</button>
-	<button @click="showOneModal">显示第一个弹窗</button>
+	<button @click="showOneModal">显示隐藏全部弹窗</button>
 	<div>
 		<p></p>
 		<p>123</p>
@@ -19,7 +19,7 @@ import { h } from 'vue';
 // import { openModal } from '../lx-modal/lxmodal.umd.js';
 import { openModal, ModalInstanceMap, closeAllModal } from './components/LxModal';
 
-// import {openModal} from 'lx-modal'
+// import { openModal } from 'lx-modal';
 
 function openModalFun() {
 	openModal(
@@ -48,8 +48,9 @@ function openModalFun() {
 }
 
 function showOneModal() {
-	console.log('==显示第一个弹窗==');
-	console.log('==ModalInstanceMap==', ModalInstanceMap.value);
+	ModalInstanceMap.value.forEach((value, key) => {
+		value._instance.exposed.minShowModal();
+	});
 }
 </script>
 <style scoped></style>

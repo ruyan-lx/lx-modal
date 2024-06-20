@@ -43,10 +43,11 @@ const modalShow = ref(true);
 
 // 最小化与显示弹窗
 function minShowModal(value: boolean) {
-	modalShow.value = value;
+	modalShow.value = !modalShow.value;
 }
 
 defineExpose({
+	modalShow,
 	minShowModal,
 });
 </script>
