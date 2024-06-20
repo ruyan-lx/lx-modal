@@ -83,9 +83,7 @@ defineEmits(['update:modalShow']);
 
 // 当前组件实例对象
 const Instance = getCurrentInstance();
-
 const uniqueId = ref(Instance?.appContext.config.globalProperties.uniqueId);
-
 // 当前弹窗元素的id
 const modalID = `draggableDOM-${uniqueId.value}`;
 // 鼠标能拖动的元素的id，是弹窗标题部分header盒子元素
@@ -94,10 +92,12 @@ const draggableDOMID = `draggableDOMPoint-${uniqueId.value}`;
 const resizeDOMID = `resizeDOM-${uniqueId.value}`;
 // 是否全屏
 const isFullScreen = ref(false);
+// 全屏之前弹窗的位置信息
+let modalLocalInfo: any;
 
 // 最大化最小化
 function toggleFullScreen() {
-	/* 
+	/*
 		requestAnimationFrame(fn) 就当作setTimeout使用就是，他会在下次重绘之前调用fn，并且fn只执行一次；
 	*/
 	requestAnimationFrame(() => {
@@ -105,7 +105,11 @@ function toggleFullScreen() {
 		let draggableDOM = document.getElementById(modalID);
 		// 当前弹窗内容部分的盒子元素，通过他的resize样式改变盒子大小
 		const resizeDOM = document.getElementById(resizeDOMID);
+		// 最大化
 		if (!isFullScreen.value) {
+			// 最大化时记录弹窗的位置信息
+			modalLocalInfo = draggableDOM?.getBoundingClientRect();
+			modalLocalInfo.resizeDOMHeight = resizeDOM?.getBoundingClientRect().height;
 			document.body.style.overflow = 'hidden';
 			draggableDOM!.style.transform = `translate(0px,0px)`;
 			draggableDOM!.style.width = '100vw';
@@ -113,15 +117,16 @@ function toggleFullScreen() {
 			resizeDOM!.style.width = '100vw';
 			resizeDOM!.style.resize = 'none';
 			isFullScreen.value = true;
-		} else {
+		}
+		// 窗口化
+		else {
 			document.body.style.overflow = 'auto';
-			resizeDOM!.style.width = props.width + 'px';
-			resizeDOM!.style.height = props.height + 'px';
+			resizeDOM!.style.width = modalLocalInfo.width + 'px';
+			resizeDOM!.style.height = modalLocalInfo.resizeDOMHeight + 'px';
 			draggableDOM!.style.width = 'inherit';
 			draggableDOM!.style.height = 'inherit';
-			draggableDOM!.style.transform = `translate(${document.documentElement.clientWidth / 2 - draggableDOM!.offsetWidth / 2}px,${
-				document.documentElement.clientHeight / 2 - draggableDOM!.offsetHeight / 2
-			}px)`;
+			// 还原弹窗之前的位置
+			draggableDOM!.style.transform = `translate(${modalLocalInfo.left}px,${modalLocalInfo.top}px)`;
 			resizeDOM!.style.resize = props.resize ? 'auto' : 'none';
 			isFullScreen.value = false;
 		}
@@ -133,7 +138,7 @@ function dragModal() {
 	// 拖拽时触发的第一个事件对象
 	let dragEvent: any = null;
 	// 鼠标按住的元素，是弹窗标题部分header盒子元素
-	const draggableDOM = document.getElementById(modalID);
+	const draggableDOM: any = document.getElementById(modalID);
 	// 拖拽需要移动的元素，是整个modal弹窗盒子
 	let draggableDOMPoint = document.getElementById(draggableDOMID);
 	// 先获取当前弹窗的索引，就是打开的第几个弹窗
@@ -144,9 +149,9 @@ function dragModal() {
 		y: 5 * modalIndex,
 	};
 	// 将弹窗放于屏幕中间
-	draggableDOM!.style.transform = `translate(${document.documentElement.clientWidth / 2 - draggableDOM!.offsetWidth / 2 + modalOffset.x}px,${
-		document.documentElement.clientHeight / 2 - draggableDOM!.offsetHeight / 2 + modalOffset.y
-	}px)`;
+	draggableDOM!.style.transform = `translate(${
+		document.documentElement.clientWidth / 2 - draggableDOM.getBoundingClientRect().width / 2 + modalOffset.x
+	}px,${document.documentElement.clientHeight / 2 - draggableDOM!.getBoundingClientRect().height / 2 + modalOffset.y}px)`;
 
 	// 拖拽开始事件
 	draggableDOMPoint?.addEventListener('dragstart', (event: any) => {
@@ -228,7 +233,6 @@ defineExpose({
 	z-index: 100;
 	font-size: 14px;
 	box-shadow: 0px 0px 5px #b1b1b1;
-	transform: translate(0px, 0px);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -247,6 +251,7 @@ defineExpose({
 	justify-content: space-between;
 	align-items: center;
 	cursor: all-scroll;
+	background-color: #f7f7f7;
 	&-left {
 		margin-left: 5px;
 		&-title {
@@ -274,7 +279,6 @@ defineExpose({
 		}
 	}
 }
-
 .modal-footer {
 	height: 24px;
 	padding: 4px;
@@ -288,7 +292,6 @@ defineExpose({
 	min-height: 100px;
 	flex-grow: 1;
 }
-
 .modal-button {
 	padding: 4px;
 	line-height: 1em;
