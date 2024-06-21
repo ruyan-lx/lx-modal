@@ -41,6 +41,10 @@ function openModalFun() {
 			title: '弹窗标题',
 			// maskClosable: true,
 			// modalMaskDisplay: true,
+			submitModalBeforeEvent: () => {
+				console.log('==11111claabak==');
+				return true;
+			},
 		}
 	).then((data: any) => {
 		console.log('==打开成功==', data);

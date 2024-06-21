@@ -34,7 +34,11 @@
 				</div>
 			</div>
 		</div>
-		<div ref="resizeDOMRef" class="modal-body" :style="`width: ${width}px; height: ${height}px ;resize: ${resize ? 'auto' : 'none'}`">
+		<div
+			ref="resizeDOMRef"
+			class="modal-body scroll-container"
+			:style="`width: ${width}px; height: ${height}px ;resize: ${resize ? 'auto' : 'none'}`"
+		>
 			<slot></slot>
 		</div>
 		<slot name="footer">
@@ -247,9 +251,56 @@ defineExpose({
 	fill: currentColor;
 	overflow: hidden;
 }
+
+.scroll-container {
+	$sb-track-color: #efefef;
+	$sb-thumb-color: #bbbbbb;
+	$sb-size: 10px;
+	// 	&::-webkit-scrollbar {
+	// 		width: $sb-size;
+	// 	}
+	// 	&::-webkit-scrollbar-track {
+	// 		background: $sb-track-color;
+	// 		border-radius: 5px;
+	// 	}
+	// 	&::-webkit-scrollbar-thumb {
+	// 		background: $sb-thumb-color;
+	// 		border-radius: 5px;
+	// 	}
+	// 	@supports not selector(::-webkit-scrollbar) {
+	// 		& {
+	// 			scrollbar-color: $sb-thumb-color $sb-size;
+	// 		}
+	// 	}
+	.row {
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	&::-webkit-scrollbar {
+		width: 10px;
+		background: $sb-track-color;
+	}
+	/* 滚动条角落 */
+	&::-webkit-scrollbar-corner,
+	&::-webkit-scrollbar-thumb,
+	&::-webkit-scrollbar-track {
+		border-radius: 5px;
+	}
+	/* 滚动条轨道 */
+	&::-webkit-scrollbar-track {
+		background: $sb-track-color;
+		border-radius: 5px;
+		box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
+	}
+	/* 滚动条手柄 */
+	&::-webkit-scrollbar-thumb {
+		background: $sb-thumb-color;
+		border-radius: 5px;
+	}
+}
 .modal-content {
 	position: absolute;
-
 	background-color: #fff;
 	border-radius: 8px;
 	z-index: 100;
