@@ -111,6 +111,7 @@ function toggleFullScreen(draggableDOM: HTMLElement, resizeDOM: HTMLElement) {
 		requestAnimationFrame(fn) 就当作setTimeout使用就是，他会在下次重绘之前调用fn，并且fn只执行一次；
 	*/
 	requestAnimationFrame(() => {
+		draggableDOM.classList.add('modal-transition'); // 添加类名来间接改变宽高
 		// 最大化
 		if (!isFullScreen.value) {
 			// 最大化时记录弹窗的位置信息
@@ -272,11 +273,6 @@ defineExpose({
 	// 			scrollbar-color: $sb-thumb-color $sb-size;
 	// 		}
 	// 	}
-	.row {
-		margin: 0;
-		line-height: 1.5;
-	}
-
 	&::-webkit-scrollbar {
 		width: 10px;
 		background: $sb-track-color;
@@ -299,6 +295,7 @@ defineExpose({
 		border-radius: 5px;
 	}
 }
+
 .modal-content {
 	position: absolute;
 	background-color: #fff;
@@ -311,6 +308,8 @@ defineExpose({
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: stretch;
+	transition: width 0.5s ease, height 0.5s ease;
+	transition: transform 0.1s ease;
 }
 .modal-header {
 	line-height: 2rem;
