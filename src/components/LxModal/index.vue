@@ -14,7 +14,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { getCurrentInstance, ref } from 'vue';
-import ModalContent from './ModalContent.vue';
+import ModalContent from './components/ModalContent/index.vue';
 
 const props = defineProps({
 	// 能否通过遮罩关闭弹窗

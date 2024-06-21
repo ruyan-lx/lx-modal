@@ -10,7 +10,7 @@
 		>
 			<div class="modal-header-left">
 				<slot name="header">
-					<span class="modal-header-left-title">{{ title }}</span>
+					<span class="modal-header-left-title" v-text="title"></span>
 				</slot>
 			</div>
 			<div class="modal-header-right">
@@ -178,10 +178,8 @@ function initDragModal(draggableDOM: HTMLElement) {
 	第二个：事件对象
 */
 function draggableDOMPointDragStartFun(event: any) {
-	// 判断当前触发事件的元素是不是弹窗标题那个header盒子元素，通过id识别
-	if (event.target!.id !== draggableDOMPointID && !draggableDOMRef) return;
-	// 全屏不让拖动
-	if (isFullScreen.value) return;
+	// 判断当前触发事件的元素是不是弹窗标题那个header盒子元素，通过id识别。全屏不让拖动
+	if (isFullScreen.value || (event.target!.id !== draggableDOMPointID && !draggableDOMRef)) return;
 	// 记录下来header盒子元素触发的事件对象的最初数据
 	dragEvent = event;
 	// 弹窗盒子透明度
@@ -192,8 +190,8 @@ function draggableDOMPointDragStartFun(event: any) {
 
 // 拖动事件
 function documentDragoverFun(event: any) {
-	// 判断当前触发事件的元素是不是弹窗标题那个header盒子元素，通过id识别。
-	if (event.target!.id !== draggableDOMPointID && !dragEvent) return;
+	// 判断当前触发事件的元素是不是弹窗标题那个header盒子元素，通过id识别。全屏不让拖动
+	if (isFullScreen.value || (event.target!.id !== draggableDOMPointID && !dragEvent)) return;
 	// 计算屏幕可以拖动的最大距离，即不让元素可以拖出屏幕
 	const _h = window.innerHeight - dragEvent.target.offsetHeight;
 	const _w = window.innerWidth - dragEvent.target.offsetWidth;
@@ -245,154 +243,5 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.icon {
-	width: 1.3em;
-	height: 1.3em;
-	vertical-align: -0.15em;
-	fill: currentColor;
-	overflow: hidden;
-}
-
-.scroll-container {
-	$sb-track-color: #efefef;
-	$sb-thumb-color: #bbbbbb;
-	$sb-size: 10px;
-	// 	&::-webkit-scrollbar {
-	// 		width: $sb-size;
-	// 	}
-	// 	&::-webkit-scrollbar-track {
-	// 		background: $sb-track-color;
-	// 		border-radius: 5px;
-	// 	}
-	// 	&::-webkit-scrollbar-thumb {
-	// 		background: $sb-thumb-color;
-	// 		border-radius: 5px;
-	// 	}
-	// 	@supports not selector(::-webkit-scrollbar) {
-	// 		& {
-	// 			scrollbar-color: $sb-thumb-color $sb-size;
-	// 		}
-	// 	}
-	&::-webkit-scrollbar {
-		width: 10px;
-		background: $sb-track-color;
-	}
-	/* 滚动条角落 */
-	&::-webkit-scrollbar-corner,
-	&::-webkit-scrollbar-thumb,
-	&::-webkit-scrollbar-track {
-		border-radius: 5px;
-	}
-	/* 滚动条轨道 */
-	&::-webkit-scrollbar-track {
-		background: $sb-track-color;
-		border-radius: 5px;
-		box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
-	}
-	/* 滚动条手柄 */
-	&::-webkit-scrollbar-thumb {
-		background: $sb-thumb-color;
-		border-radius: 5px;
-	}
-}
-
-.modal-content {
-	position: absolute;
-	background-color: #fff;
-	border-radius: 8px;
-	z-index: 100;
-	font-size: 14px;
-	box-shadow: 0px 0px 5px #b1b1b1;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: stretch;
-	transition: width 0.5s ease, height 0.5s ease;
-	transition: transform 0.1s ease;
-}
-.modal-header {
-	line-height: 2rem;
-	border-top-right-radius: inherit;
-	border-top-left-radius: inherit;
-	border-top: 1px solid #e4e7ed;
-	border-bottom: 1px solid #e4e7ed;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: center;
-	cursor: all-scroll;
-	background-color: #f7f7f7;
-	&-left {
-		margin-left: 5px;
-		&-title {
-			font-weight: bold;
-			white-space: nowrap; /*强制内容在一行显示*/
-			overflow: hidden; /*超出部分隐藏*/
-			text-overflow: ellipsis; /*溢出的部分使用省略号*/
-		}
-	}
-	&-right {
-		color: #848484;
-		margin-right: 5px;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: space-evenly;
-		align-items: center;
-		height: inherit;
-		&-btn {
-			cursor: pointer;
-			width: 2rem;
-			height: inherit;
-			border-left: 1px solid #e4e7ed;
-			text-align: center;
-		}
-	}
-}
-.modal-footer {
-	height: 24px;
-	padding: 4px;
-	border-top: 1px solid #e4e7ed;
-	text-align: right;
-}
-.modal-body {
-	user-select: text;
-	overflow: auto;
-	min-width: 200px;
-	min-height: 100px;
-	flex-grow: 1;
-}
-.modal-button {
-	padding: 4px;
-	line-height: 1em;
-	border: 1px solid #dcdfe6;
-	outline: none;
-	display: inline-block;
-	border-radius: 4px;
-	cursor: pointer;
-	background-color: #fff;
-	transition: 0.1s;
-	width: 4rem;
-	height: 1.4rem;
-	&:hover {
-		color: #409eff;
-		border-color: #c6e2ff;
-		background-color: #ecf5ff;
-	}
-	& + & {
-		margin-left: 10px;
-	}
-	&-primary {
-		background-color: #2d8cf0;
-		border-color: #2d8cf0;
-		color: white;
-		&:hover {
-			background: #66b1ff;
-			border-color: #66b1ff;
-			color: #fff;
-		}
-	}
-}
+@import './style.scss';
 </style>
