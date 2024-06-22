@@ -13,7 +13,7 @@
 			>
 				<div class="modal-header-left">
 					<slot name="header-left">
-						<span class="modal-header-left-title" v-text="title"></span>
+						<span class="modal-header-left-title" v-text="modalTitle"></span>
 					</slot>
 				</div>
 				<div class="modal-header-right">
@@ -69,7 +69,7 @@
 				</div>
 				<div class="modal-header-left">
 					<slot name="header-left">
-						<span class="modal-header-left-title" v-text="title"></span>
+						<span class="modal-header-left-title" v-text="modalTitle"></span>
 					</slot>
 				</div>
 			</div>
@@ -99,7 +99,7 @@ export default {
 import { getCurrentInstance, onMounted, ref } from 'vue';
 
 const props = defineProps({
-	title: {
+	modalTitle: {
 		type: String,
 		default: '🐽lx-modal',
 	},

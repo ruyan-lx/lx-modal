@@ -20,19 +20,21 @@ import Helloworld from './components/HelloWorld/index.vue';
 import { openModal, ModalInstanceMap, closeAllModal } from './components/LxModal';
 
 // import { openModal, ModalInstanceMap, closeAllModal } from 'lx-modal';
+
+// 现在用h\render\defineComponent\creatApp用的飞起
 const app = defineComponent({
 	render() {
-		return h('div', {}, '1231231321');
+		return h(Helloworld, null);
 	},
 });
 function openModalFun() {
 	openModal(app, {
 		width: 600,
 		height: 400,
-		title: '弹窗标题',
+		// modalTitle: '弹窗标题',
 		// maskClosable: true,
 		// modalMaskDisplay: true,
-		footerHide: true,
+		footerHide: false,
 		modalStyle: 'mac',
 		submitModalBeforeEvent: () => {
 			console.log('==11111claabak==');
