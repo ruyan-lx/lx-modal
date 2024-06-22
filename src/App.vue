@@ -36,7 +36,7 @@ function openModalFun() {
 		// maskClosable: true,
 		// modalMaskDisplay: true,
 		footerHide: false,
-		modalStyle: 'mac',
+		// modalStyle: 'mac',
 		submitModalBeforeEvent: () => {
 			console.log('==11111claabak==');
 			return true;
