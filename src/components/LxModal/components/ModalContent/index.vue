@@ -191,7 +191,7 @@ function draggableDOMPointDragStartFun(event: any) {
 // 拖动事件
 function documentDragoverFun(event: any) {
 	// 判断当前触发事件的元素是不是弹窗标题那个header盒子元素，通过id识别。全屏不让拖动
-	if (isFullScreen.value || (event.target!.id !== draggableDOMPointID && !dragEvent)) return;
+	if (isFullScreen.value || (event.target!.id !== draggableDOMPointID && !dragEvent) || !draggableDOMRef.value) return;
 	// 计算屏幕可以拖动的最大距离，即不让元素可以拖出屏幕
 	const _h = window.innerHeight - dragEvent.target.offsetHeight;
 	const _w = window.innerWidth - dragEvent.target.offsetWidth;
