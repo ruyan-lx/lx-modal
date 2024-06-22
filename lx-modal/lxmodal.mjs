@@ -1,37 +1,58 @@
-import { defineComponent as I, getCurrentInstance as B, ref as _, onMounted as N, openBlock as g, createElementBlock as v, createElementVNode as l, renderSlot as b, toDisplayString as O, normalizeStyle as F, createCommentVNode as R, pushScopeId as A, popScopeId as V, withDirectives as $, vShow as k, createVNode as W, mergeProps as U, withCtx as X, createApp as Y, h as E } from "vue";
-const x = (o) => (A("data-v-7529da5a"), o = o(), V(), o), j = { class: "modal-header-left" }, G = { class: "modal-header-left-title" }, J = { class: "modal-header-right" }, K = /* @__PURE__ */ x(() => /* @__PURE__ */ l("svg", {
+import { defineComponent as F, getCurrentInstance as q, ref as v, onMounted as U, openBlock as m, createElementBlock as b, renderSlot as _, createElementVNode as t, toDisplayString as E, createCommentVNode as z, normalizeClass as X, normalizeStyle as Y, pushScopeId as T, popScopeId as j, createBlock as G, Transition as J, withCtx as D, withDirectives as R, vShow as L, createVNode as K, mergeProps as Q, createApp as Z, h as H } from "vue";
+const p = (n) => (T("data-v-6bf5990b"), n = n(), j(), n), O = { class: "modal-header-left" }, ee = ["textContent"], te = { class: "modal-header-right" }, oe = /* @__PURE__ */ p(() => /* @__PURE__ */ t("svg", {
   class: "icon",
   "aria-hidden": "true"
 }, [
-  /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuixiaohua" })
-], -1)), Q = [
-  K
-], T = {
+  /* @__PURE__ */ t("use", { "xlink:href": "#icon-zuixiaohua" })
+], -1)), ne = [
+  oe
+], ae = {
   key: 0,
   class: "icon",
   "aria-hidden": "true"
-}, Z = /* @__PURE__ */ x(() => /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuidahua" }, null, -1)), ee = [
-  Z
-], te = {
+}, le = /* @__PURE__ */ p(() => /* @__PURE__ */ t("use", { "xlink:href": "#icon-zuidahua" }, null, -1)), ie = [
+  le
+], se = {
   key: 1,
   class: "icon",
   "aria-hidden": "true"
-}, oe = /* @__PURE__ */ x(() => /* @__PURE__ */ l("use", { "xlink:href": "#icon-zuidahua1" }, null, -1)), ne = [
-  oe
-], le = /* @__PURE__ */ x(() => /* @__PURE__ */ l("svg", {
+}, de = /* @__PURE__ */ p(() => /* @__PURE__ */ t("use", { "xlink:href": "#icon-zuidahua1" }, null, -1)), re = [
+  de
+], ue = /* @__PURE__ */ p(() => /* @__PURE__ */ t("svg", {
   class: "icon",
   "aria-hidden": "true"
 }, [
-  /* @__PURE__ */ l("use", { "xlink:href": "#icon-guanbi" })
-], -1)), ae = [
-  le
-], se = {
+  /* @__PURE__ */ t("use", { "xlink:href": "#icon-guanbi" })
+], -1)), ce = [
+  ue
+], fe = { class: "modal-header-right" }, he = /* @__PURE__ */ p(() => /* @__PURE__ */ t("svg", {
+  class: "icon",
+  "aria-hidden": "true"
+}, [
+  /* @__PURE__ */ t("use", { "xlink:href": "#icon-guanbi1" })
+], -1)), me = [
+  he
+], ve = /* @__PURE__ */ p(() => /* @__PURE__ */ t("svg", {
+  class: "icon",
+  "aria-hidden": "true"
+}, [
+  /* @__PURE__ */ t("use", { "xlink:href": "#icon-zuidahua2" })
+], -1)), ge = [
+  ve
+], pe = /* @__PURE__ */ p(() => /* @__PURE__ */ t("svg", {
+  class: "icon",
+  "aria-hidden": "true"
+}, [
+  /* @__PURE__ */ t("use", { "xlink:href": "#icon-zuixiaohua4-copy" })
+], -1)), ye = [
+  pe
+], be = { class: "modal-header-left" }, _e = ["textContent"], we = {
   key: 0,
   class: "modal-footer"
-}, ie = {
+}, xe = {
   name: "ModalContent"
-}, de = /* @__PURE__ */ I({
-  ...ie,
+}, ke = /* @__PURE__ */ F({
+  ...xe,
   props: {
     title: {
       type: String,
@@ -63,123 +84,173 @@ const x = (o) => (A("data-v-7529da5a"), o = o(), V(), o), j = { class: "modal-he
     submitModalBeforeEvent: {
       type: Function,
       default: null
+    },
+    // 窗口风格
+    modalStyle: {
+      type: String,
+      default: "windows"
     }
   },
   emits: ["update:modalShow"],
-  setup(o, { expose: i }) {
-    const r = o, n = B(), a = _(n == null ? void 0 : n.appContext.config.globalProperties.uniqueId), s = `draggableDOM-${a.value}`, u = `draggableDOMPoint-${a.value}`, p = `resizeDOM-${a.value}`, d = _(!1);
-    let c;
-    function D() {
+  setup(n, { expose: i }) {
+    const u = n, a = q(), l = v(a == null ? void 0 : a.appContext.config.globalProperties.uniqueId), d = `draggableDOM-${l.value}`, c = `draggableDOMPoint-${l.value}`, f = v(!1);
+    let r;
+    function x(e, o) {
       requestAnimationFrame(() => {
-        let t = document.getElementById(s);
-        const e = document.getElementById(p);
-        d.value ? (document.body.style.overflow = "auto", e.style.width = c.width + "px", e.style.height = c.resizeDOMHeight + "px", t.style.width = "inherit", t.style.height = "inherit", t.style.transform = `translate(${c.left}px,${c.top}px)`, e.style.resize = r.resize ? "auto" : "none", d.value = !1) : (c = t == null ? void 0 : t.getBoundingClientRect(), c.resizeDOMHeight = e == null ? void 0 : e.getBoundingClientRect().height, document.body.style.overflow = "hidden", t.style.transform = "translate(0px,0px)", t.style.width = "100vw", t.style.height = "100vh", e.style.width = "100vw", e.style.resize = "none", d.value = !0);
+        e.classList.add("modal-transition"), f.value ? (document.body.style.overflow = "auto", o.style.width = r.width + "px", o.style.height = r.resizeDOMHeight + "px", e.style.width = "inherit", e.style.height = "inherit", e.style.transform = `translate(${r.left}px,${r.top}px)`, o.style.resize = u.resize ? "auto" : "none", f.value = !1) : (r = e == null ? void 0 : e.getBoundingClientRect(), r.resizeDOMHeight = o == null ? void 0 : o.getBoundingClientRect().height, document.body.style.overflow = "hidden", e.style.transform = "translate(0px,0px)", e.style.width = "100vw", e.style.height = "100vh", o.style.width = "100vw", o.style.resize = "none", f.value = !0);
       });
     }
-    function P() {
-      let t = null;
-      const e = document.getElementById(s);
-      let h = document.getElementById(u);
-      const M = n == null ? void 0 : n.appContext.config.globalProperties.modalIndex, C = {
-        x: 5 * M,
-        y: 5 * M
-      };
-      e.style.transform = `translate(${document.documentElement.clientWidth / 2 - e.getBoundingClientRect().width / 2 + C.x}px,${document.documentElement.clientHeight / 2 - e.getBoundingClientRect().height / 2 + C.y}px)`, h == null || h.addEventListener("dragstart", (m) => {
-        m.target.id !== u && !e || d.value || (t = m, e.style.opacity = ".92");
-      }), document == null || document.addEventListener("dragover", (m) => {
-        if (m.target.id !== u && !t)
-          return;
-        const q = window.innerHeight - t.target.offsetHeight, L = window.innerWidth - t.target.offsetWidth;
-        e.style.transform = `translate(${Math.min(Math.max(0, m.clientX - t.offsetX), L)}px,${Math.min(
-          Math.max(0, m.clientY - t.offsetY),
-          q
-        )}px)`, m.preventDefault();
-      }), e == null || e.addEventListener("drop", () => {
-        e.style.opacity = "1";
-      });
+    const h = v(), S = v(), k = v();
+    let y = null;
+    function V(e) {
+      const o = a == null ? void 0 : a.appContext.config.globalProperties.modalIndex, s = {
+        x: 5 * o,
+        y: 5 * o
+      }, I = e.getBoundingClientRect(), B = document.documentElement;
+      e.style.transform = `translate(${B.clientWidth / 2 - I.width / 2 + s.x}px,${B.clientHeight / 2 - I.height / 2 + s.y}px)`, document == null || document.addEventListener("dragover", C);
     }
-    function y(t) {
-      switch (t) {
+    function M(e) {
+      f.value || e.target.id !== c && !h || (y = e, h.value.style.opacity = ".92", document == null || document.addEventListener("dragover", C));
+    }
+    function C(e) {
+      if (f.value || e.target.id !== c && !y || !h.value)
+        return;
+      const o = window.innerHeight - y.target.offsetHeight, s = window.innerWidth - y.target.offsetWidth;
+      h.value.style.transform = `translate(${Math.min(Math.max(0, e.clientX - y.offsetX), s)}px,${Math.min(
+        Math.max(0, e.clientY - y.offsetY),
+        o
+      )}px)`, e.preventDefault();
+    }
+    function P(e) {
+      h.value.style.opacity = "1", document.removeEventListener("dragover", C);
+    }
+    function w(e) {
+      switch (e) {
         case "cancel":
         case "close":
         case "submit":
-          n == null || n.appContext.config.globalProperties.unmountModal();
+          a == null || a.appContext.config.globalProperties.unmountModal();
           break;
       }
     }
-    async function H() {
-      if (typeof r.submitModalBeforeEvent != "function")
-        return y("submit");
+    async function W() {
+      if (typeof u.submitModalBeforeEvent != "function")
+        return w("submit");
       await new Promise(() => {
-        if (r.submitModalBeforeEvent())
-          return y("submit");
+        if (u.submitModalBeforeEvent())
+          return w("submit");
       });
     }
-    return N(() => {
-      P();
+    return U(() => {
+      V(h.value);
     }), i({
-      uniqueId: a
-    }), (t, e) => (g(), v("div", {
-      id: s,
+      uniqueId: l
+    }), (e, o) => (m(), b("div", {
+      ref_key: "draggableDOMRef",
+      ref: h,
+      id: d,
       class: "modal-content"
     }, [
-      l("div", {
-        id: u,
-        class: "modal-header",
-        draggable: "true"
-      }, [
-        l("div", j, [
-          b(t.$slots, "header", {}, () => [
-            l("span", G, O(o.title), 1)
-          ], !0)
-        ]),
-        l("div", J, [
-          l("div", {
-            class: "modal-header-right-btn",
-            onClick: e[0] || (e[0] = (h) => t.$emit("update:modalShow", !1))
-          }, Q),
-          l("div", {
-            class: "modal-header-right-btn",
-            onClick: D
-          }, [
-            d.value ? (g(), v("svg", T, ee)) : (g(), v("svg", te, ne))
+      _(e.$slots, "header", {}, () => [
+        n.modalStyle === "windows" ? (m(), b("div", {
+          key: 0,
+          ref_key: "draggableDOMPointRef",
+          ref: S,
+          id: c,
+          class: "modal-header windows",
+          draggable: "true",
+          onDragstart: M,
+          onDrop: P
+        }, [
+          t("div", O, [
+            _(e.$slots, "header-left", {}, () => [
+              t("span", {
+                class: "modal-header-left-title",
+                textContent: E(n.title)
+              }, null, 8, ee)
+            ], !0)
           ]),
-          l("div", {
-            class: "modal-header-right-btn",
-            onClick: e[1] || (e[1] = (h) => y("close"))
-          }, ae)
-        ])
-      ]),
-      l("div", {
-        id: p,
-        class: "modal-body",
-        style: F(`width: ${o.width}px; height: ${o.height}px ;resize: ${o.resize ? "auto" : "none"}`)
+          t("div", te, [
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[0] || (o[0] = (s) => e.$emit("update:modalShow", !1))
+            }, ne),
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[1] || (o[1] = (s) => x(h.value, k.value))
+            }, [
+              f.value ? (m(), b("svg", ae, ie)) : (m(), b("svg", se, re))
+            ]),
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[2] || (o[2] = (s) => w("close"))
+            }, ce)
+          ])
+        ], 544)) : n.modalStyle === "mac" ? (m(), b("div", {
+          key: 1,
+          ref_key: "draggableDOMPointRef",
+          ref: S,
+          id: c,
+          class: "modal-header mac",
+          draggable: "true",
+          onDragstart: M,
+          onDrop: P
+        }, [
+          t("div", fe, [
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[3] || (o[3] = (s) => w("close"))
+            }, me),
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[4] || (o[4] = (s) => x(h.value, k.value))
+            }, ge),
+            t("div", {
+              class: "modal-header-right-btn",
+              onClick: o[5] || (o[5] = (s) => e.$emit("update:modalShow", !1))
+            }, ye)
+          ]),
+          t("div", be, [
+            _(e.$slots, "header-left", {}, () => [
+              t("span", {
+                class: "modal-header-left-title",
+                textContent: E(n.title)
+              }, null, 8, _e)
+            ], !0)
+          ])
+        ], 544)) : z("", !0)
+      ], !0),
+      t("div", {
+        ref_key: "resizeDOMRef",
+        ref: k,
+        class: X(["modal-body scroll-container", { "modal-diy-body": n.footerHide }]),
+        style: Y(`width: ${n.width}px; height: ${n.height}px ;resize: ${n.resize ? "auto" : "none"}`)
       }, [
-        b(t.$slots, "default", {}, void 0, !0)
-      ], 4),
-      b(t.$slots, "footer", {}, () => [
-        o.footerHide ? R("", !0) : (g(), v("div", se, [
-          l("button", {
+        _(e.$slots, "default", {}, void 0, !0)
+      ], 6),
+      _(e.$slots, "footer", {}, () => [
+        n.footerHide ? z("", !0) : (m(), b("div", we, [
+          t("button", {
             class: "modal-button",
-            onClick: e[2] || (e[2] = (h) => y("cancel"))
+            onClick: o[6] || (o[6] = (s) => w("cancel"))
           }, "取消"),
-          l("button", {
+          t("button", {
             class: "modal-button modal-button-primary",
-            onClick: H
+            onClick: W
           }, "提交")
         ]))
       ], !0)
-    ]));
+    ], 512));
   }
-}), S = (o, i) => {
-  const r = o.__vccOpts || o;
-  for (const [n, a] of i)
-    r[n] = a;
-  return r;
-}, re = /* @__PURE__ */ S(de, [["__scopeId", "data-v-7529da5a"]]), ue = { class: "modal" }, ce = {
+}), N = (n, i) => {
+  const u = n.__vccOpts || n;
+  for (const [a, l] of i)
+    u[a] = l;
+  return u;
+}, Ce = /* @__PURE__ */ N(ke, [["__scopeId", "data-v-6bf5990b"]]), $e = { class: "modal" }, Se = {
   name: "LxModal"
-}, me = /* @__PURE__ */ I({
-  ...ce,
+}, Me = /* @__PURE__ */ F({
+  ...Se,
   props: {
     // 能否通过遮罩关闭弹窗
     maskClosable: {
@@ -193,65 +264,71 @@ const x = (o) => (A("data-v-7529da5a"), o = o(), V(), o), j = { class: "modal-he
     }
   },
   emits: ["close"],
-  setup(o, { expose: i, emit: r }) {
-    const n = o, a = B();
-    function s() {
-      n.maskClosable && (a == null || a.appContext.config.globalProperties.unmountModal());
+  setup(n, { expose: i, emit: u }) {
+    const a = n, l = q();
+    function d() {
+      a.maskClosable && (l == null || l.appContext.config.globalProperties.unmountModal());
     }
-    const u = _(!0);
-    function p(d) {
-      u.value = d;
+    const c = v(!0);
+    function f(r) {
+      c.value = !c.value;
     }
     return i({
-      minShowModal: p
-    }), (d, c) => $((g(), v("div", ue, [
-      $(l("div", {
-        class: "modal-mask",
-        onClick: s
-      }, null, 512), [
-        [k, o.modalMaskDisplay]
+      modalShow: c,
+      minShowModal: f
+    }), (r, x) => (m(), G(J, null, {
+      default: D(() => [
+        R(t("div", $e, [
+          R(t("div", {
+            class: "modal-mask",
+            onClick: d
+          }, null, 512), [
+            [L, n.modalMaskDisplay]
+          ]),
+          K(Ce, Q(r.$attrs, { "onUpdate:modalShow": f }), {
+            default: D(() => [
+              _(r.$slots, "default", {}, void 0, !0)
+            ]),
+            _: 3
+          }, 16)
+        ], 512), [
+          [L, c.value]
+        ])
       ]),
-      W(re, U(d.$attrs, { "onUpdate:modalShow": p }), {
-        default: X(() => [
-          b(d.$slots, "default", {}, void 0, !0)
-        ]),
-        _: 3
-      }, 16)
-    ], 512)), [
-      [k, u.value]
-    ]);
+      _: 3
+    }));
   }
-}), z = /* @__PURE__ */ S(me, [["__scopeId", "data-v-019cd53d"]]);
-function he() {
+}), A = /* @__PURE__ */ N(Me, [["__scopeId", "data-v-d0e46f78"]]);
+function Pe() {
   return Math.random().toString(36).substr(2, 9);
 }
-let f = _(/* @__PURE__ */ new Map());
-function pe() {
-  f.value.size !== 0 && f.value.forEach((o) => {
-    o.config.globalProperties.unmountModal();
+let g = v(/* @__PURE__ */ new Map());
+function Be() {
+  g.value.size !== 0 && g.value.forEach((n) => {
+    n.config.globalProperties.unmountModal();
   });
 }
-function ge(o, i) {
-  return new Promise((r) => {
-    const n = he(), a = document.createElement("div");
-    a.id = n, document.body.appendChild(a);
-    const s = Y(E(z, i, [E(o, i)]), {});
-    s.config.globalProperties.modalIndex = f.value.size, s.config.globalProperties.uniqueId = n, f.value.set(n, s), s.mount(a), s.config.globalProperties.unmountModal = function() {
-      document.body.style.overflow = "auto", f.value.get(n).unmount(), a.remove(), f.value.delete(n);
-    }, r({ uniqueId: n, element: a, app: s });
+function Ee(n, i) {
+  return new Promise((u) => {
+    const a = Pe(), l = document.createElement("div");
+    l.id = a, document.body.appendChild(l);
+    const d = Z(H(A, i, [H(n, i)]), {});
+    d.config.globalProperties.modalIndex = g.value.size, d.config.globalProperties.uniqueId = a, g.value.set(a, d), d.mount(l), d.config.globalProperties.unmountModal = function() {
+      g.value.get(a)._instance.exposed.modalShow.value = !1, document.body.style.overflow = "auto", g.value.get(a).unmount(), l.remove(), g.value.delete(a);
+    }, u({ uniqueId: a, element: l, app: d });
   });
 }
-const w = [z], ve = {
-  install(o) {
-    w == null || w.forEach((i) => {
-      o.component(i.name, i);
+const $ = [A], ze = {
+  install(n) {
+    $ == null || $.forEach((i) => {
+      n.component(i.name, i);
     });
   }
 };
 export {
-  z as LxModal,
-  f as ModalInstanceMap,
-  pe as closeAllModal,
-  ve as default,
-  ge as openModal
+  A as LxModal,
+  g as ModalInstanceMap,
+  Be as closeAllModal,
+  ze as default,
+  Ee as openModal
 };

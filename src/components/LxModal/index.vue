@@ -44,7 +44,7 @@ function maskClose() {
 const modalShow = ref(true);
 
 // 最小化与显示弹窗
-function minShowModal(value: boolean) {
+function minShowModal(_value: boolean) {
 	modalShow.value = !modalShow.value;
 }
 

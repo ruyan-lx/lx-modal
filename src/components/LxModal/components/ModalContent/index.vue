@@ -49,20 +49,20 @@
 			>
 				<div class="modal-header-right">
 					<!-- 关闭 -->
-					<div class="modal-header-right-btn" @click="closeModal('close')">
-						<svg class="icon" aria-hidden="true">
+					<div class="modal-header-right-btn">
+						<svg class="icon" aria-hidden="true" @click="closeModal('close')">
 							<use xlink:href="#icon-guanbi1"></use>
 						</svg>
 					</div>
 					<!-- 全屏 -->
-					<div class="modal-header-right-btn" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
-						<svg class="icon" aria-hidden="true">
+					<div class="modal-header-right-btn">
+						<svg class="icon" aria-hidden="true" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
 							<use xlink:href="#icon-zuidahua2"></use>
 						</svg>
 					</div>
 					<!-- 最小化 -->
-					<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
-						<svg class="icon" aria-hidden="true">
+					<div class="modal-header-right-btn">
+						<svg class="icon" aria-hidden="true" @click="$emit('update:modalShow', false)">
 							<use xlink:href="#icon-zuixiaohua4-copy"></use>
 						</svg>
 					</div>
@@ -250,7 +250,7 @@ function documentDragoverFun(event: any) {
 }
 
 // 拖拽松开事件，拖拽结束
-function draggableDOMPointDragDropFun(event: Event) {
+function draggableDOMPointDragDropFun(_event: Event) {
 	draggableDOMRef.value.style.opacity = '1';
 	// 删除监听，防止内存泄露
 	document.removeEventListener('dragover', documentDragoverFun);

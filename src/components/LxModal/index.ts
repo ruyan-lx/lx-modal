@@ -1,5 +1,5 @@
 import LxModal from './index.vue';
-import { type Component, type App, h, ref, nextTick } from 'vue';
+import { type Component, type App, h, ref } from 'vue';
 import { createApp } from 'vue';
 
 function generateUniqueId(): string {
