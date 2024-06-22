@@ -1,5 +1,5 @@
 import LxModal from './index.vue';
-import { type Component, type App, h, ref } from 'vue';
+import { type Component, type App, h, ref, nextTick } from 'vue';
 import { createApp } from 'vue';
 
 function generateUniqueId(): string {
@@ -38,12 +38,19 @@ export function openModal(slot: string | Component, config: { [k: string]: any }
 		ModalInstanceMap.value.set(uniqueId, app);
 		// 将app这个vue实例对象挂载到指定的dom元素上；
 		app.mount(element);
+		console.log('====', ModalInstanceMap.value.get(uniqueId));
 		// 每个弹窗实例绑定自己的关闭函数
 		app.config.globalProperties.unmountModal = function () {
-			document.body.style.overflow = 'auto';
-			ModalInstanceMap.value.get(uniqueId).unmount();
-			element.remove();
-			ModalInstanceMap.value.delete(uniqueId);
+			ModalInstanceMap.value.get(uniqueId)._instance.exposed.modalShow.value = false;
+			const timer = setInterval(() => {
+				if (ModalInstanceMap.value.get(uniqueId)._instance.exposed.modalShow.value) {
+					document.body.style.overflow = 'auto';
+					ModalInstanceMap.value.get(uniqueId).unmount();
+					element.remove();
+					ModalInstanceMap.value.delete(uniqueId);
+					clearInterval(timer);
+				}
+			}, 500);
 		};
 		resolve({ uniqueId, element, app });
 	});
