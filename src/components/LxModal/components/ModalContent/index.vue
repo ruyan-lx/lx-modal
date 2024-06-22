@@ -228,8 +228,6 @@ function draggableDOMPointDragStartFun(event: any) {
 	if (isFullScreen.value || (event.target!.id !== draggableDOMPointID && !draggableDOMRef)) return;
 	// 记录下来header盒子元素触发的事件对象的最初数据
 	dragEvent = event;
-	// 弹窗盒子透明度
-	draggableDOMRef.value.style.opacity = '.92';
 	// 拖拽进行事件，鼠标拖动不松开就一直触发
 	document?.addEventListener('dragover', documentDragoverFun);
 }
@@ -251,7 +249,6 @@ function documentDragoverFun(event: any) {
 
 // 拖拽松开事件，拖拽结束
 function draggableDOMPointDragDropFun(_event: Event) {
-	draggableDOMRef.value.style.opacity = '1';
 	// 删除监听，防止内存泄露
 	document.removeEventListener('dragover', documentDragoverFun);
 }
