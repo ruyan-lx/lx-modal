@@ -69,14 +69,14 @@ defineExpose({
 	}
 }
 
-/* 下面我们会解释这些 class 是做什么的 */
 .v-enter-active,
 .v-leave-active {
-	transition: opacity 0.2s ease;
+	transition: all 0.3s ease-out;
 }
 
 .v-enter-from,
 .v-leave-to {
+	transform: translateY(20px);
 	opacity: 0;
 }
 </style>
