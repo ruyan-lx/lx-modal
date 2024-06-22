@@ -1,10 +1,12 @@
 <template>
-	<div class="modal" v-show="modalShow">
-		<div v-show="modalMaskDisplay" class="modal-mask" @click="maskClose"></div>
-		<modal-content v-bind="$attrs" @update:modalShow="minShowModal">
-			<slot></slot>
-		</modal-content>
-	</div>
+	<transition>
+		<div class="modal" v-show="modalShow">
+			<div v-show="modalMaskDisplay" class="modal-mask" @click="maskClose"></div>
+			<modal-content v-bind="$attrs" @update:modalShow="minShowModal">
+				<slot></slot>
+			</modal-content>
+		</div>
+	</transition>
 </template>
 
 <script lang="ts">
@@ -65,5 +67,16 @@ defineExpose({
 		z-index: 99;
 		background-color: rgba($color: #000000, $alpha: 0.4);
 	}
+}
+
+/* 下面我们会解释这些 class 是做什么的 */
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
 }
 </style>
