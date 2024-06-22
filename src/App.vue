@@ -2,6 +2,7 @@
 	<button @click="openModalFun">打开弹窗</button>
 	<button @click="closeAllModal">关闭所有弹窗</button>
 	<button @click="showOneModal">显示隐藏全部弹窗</button>
+	<lx-modal-box v-model="ModalInstanceMap"> </lx-modal-box>
 	<div id="content">
 		<p></p>
 		<p>123</p>
@@ -17,9 +18,9 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue';
 import Helloworld from './components/HelloWorld/index.vue';
-import { openModal, ModalInstanceMap, closeAllModal } from './components/LxModal';
+// import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from './components';
 
-// import { openModal, ModalInstanceMap, closeAllModal } from 'lx-modal';
+import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from 'lx-modal';
 
 // 现在用h\render\defineComponent\creatApp用的飞起
 const app = defineComponent({
@@ -31,7 +32,7 @@ function openModalFun() {
 	openModal(app, {
 		width: 600,
 		height: 400,
-		// modalTitle: '弹窗标题',
+		modalTitle: '弹窗标题',
 		// maskClosable: true,
 		// modalMaskDisplay: true,
 		footerHide: false,
@@ -40,8 +41,9 @@ function openModalFun() {
 			console.log('==11111claabak==');
 			return true;
 		},
-	}).then((data: any) => {
-		console.log('==打开成功==', data);
+	}).then((_data: any) => {
+		// console.log('==打开成功==', data);
+		console.log('==ModalInstanceMap==', ModalInstanceMap.value);
 	});
 }
 
