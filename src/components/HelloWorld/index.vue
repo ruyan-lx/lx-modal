@@ -44,8 +44,8 @@
 		<h1>HelloWorld</h1>
 	</div>
 	<div class="modal-diy-footer">
-		<button>取消</button>
-		<button>保存</button>
+		<button @click="cancelFun">取消</button>
+		<button @click="cancelFun">保存</button>
 	</div>
 </template>
 
@@ -54,7 +54,14 @@ export default {
 	name: 'HelloWorld',
 };
 </script>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { getCurrentInstance } from 'vue';
+
+const Instance = getCurrentInstance();
+function cancelFun() {
+	Instance?.appContext.config.globalProperties.unmountModal();
+}
+</script>
 
 <style scoped lang="scss">
 .modal-diy-footer {
