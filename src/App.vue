@@ -16,37 +16,24 @@
 </template>
 <script setup lang="ts">
 import { h } from 'vue';
-// import { openModal } from '../lx-modal/lxmodal.umd.js';
+import Helloworld from './components/HelloWorld/index.vue';
 import { openModal, ModalInstanceMap, closeAllModal } from './components/LxModal';
 
 // import { openModal } from 'lx-modal';
 
 function openModalFun() {
-	openModal(
-		h('div', null, [
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-			h('p', null, '我是组件内容，123123232132。。。。。。。。。。。。。。。。。'),
-		]),
-		{
-			width: 600,
-			height: 400,
-			title: '弹窗标题',
-			// maskClosable: true,
-			// modalMaskDisplay: true,
-			submitModalBeforeEvent: () => {
-				console.log('==11111claabak==');
-				return true;
-			},
-		}
-	).then((data: any) => {
+	openModal(Helloworld, {
+		width: 600,
+		height: 400,
+		title: '弹窗标题',
+		// maskClosable: true,
+		// modalMaskDisplay: true,
+		footerHide: true,
+		submitModalBeforeEvent: () => {
+			console.log('==11111claabak==');
+			return true;
+		},
+	}).then((data: any) => {
 		console.log('==打开成功==', data);
 	});
 }

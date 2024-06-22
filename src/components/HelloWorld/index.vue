@@ -1,6 +1,51 @@
 <template>
-	<div>
+	<div class="modal-diy-content">
 		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+
+		<h1>HelloWorld</h1>
+	</div>
+	<div class="modal-diy-footer">
+		<button>取消</button>
+		<button>保存</button>
 	</div>
 </template>
 
@@ -11,4 +56,9 @@ export default {
 </script>
 <script lang="ts" setup></script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.modal-diy-footer {
+	padding: 4px;
+	text-align: right;
+}
+</style>

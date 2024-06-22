@@ -37,6 +37,7 @@
 		<div
 			ref="resizeDOMRef"
 			class="modal-body scroll-container"
+			:class="{ 'modal-diy-body': footerHide }"
 			:style="`width: ${width}px; height: ${height}px ;resize: ${resize ? 'auto' : 'none'}`"
 		>
 			<slot></slot>

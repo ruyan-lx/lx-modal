@@ -147,3 +147,22 @@
 		}
 	}
 }
+
+.modal-diy-body {
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: space-between;
+	$bottom-height: 24px;
+	:deep(.modal-diy-content) {
+		margin-bottom: calc($bottom-height + 16px);
+	}
+	:deep(.modal-diy-footer) {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: calc(100% - 19px);
+		height: $bottom-height;
+		border-top: 1px solid #e4e7ed;
+		background-color: white;
+	}
+}
