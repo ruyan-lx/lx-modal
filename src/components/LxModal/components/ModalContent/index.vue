@@ -1,39 +1,79 @@
 <template>
 	<div ref="draggableDOMRef" :id="modalID" class="modal-content">
-		<div
-			ref="draggableDOMPointRef"
-			:id="draggableDOMPointID"
-			class="modal-header"
-			draggable="true"
-			@dragstart="draggableDOMPointDragStartFun"
-			@drop="draggableDOMPointDragDropFun"
-		>
-			<div class="modal-header-left">
-				<slot name="header">
-					<span class="modal-header-left-title" v-text="title"></span>
-				</slot>
+		<slot name="header">
+			<!-- Windows风格 -->
+			<div
+				v-if="modalStyle === 'windows'"
+				ref="draggableDOMPointRef"
+				:id="draggableDOMPointID"
+				class="modal-header windows"
+				draggable="true"
+				@dragstart="draggableDOMPointDragStartFun"
+				@drop="draggableDOMPointDragDropFun"
+			>
+				<div class="modal-header-left">
+					<slot name="header-left">
+						<span class="modal-header-left-title" v-text="title"></span>
+					</slot>
+				</div>
+				<div class="modal-header-right">
+					<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-zuixiaohua"></use>
+						</svg>
+					</div>
+					<div class="modal-header-right-btn" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
+						<svg v-if="isFullScreen" class="icon" aria-hidden="true">
+							<use xlink:href="#icon-zuidahua"></use>
+						</svg>
+						<svg v-else class="icon" aria-hidden="true">
+							<use xlink:href="#icon-zuidahua1"></use>
+						</svg>
+					</div>
+					<div class="modal-header-right-btn" @click="closeModal('close')">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-guanbi"></use>
+						</svg>
+					</div>
+				</div>
 			</div>
-			<div class="modal-header-right">
-				<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-zuixiaohua"></use>
-					</svg>
+			<!-- mac风格 -->
+			<div
+				v-else-if="modalStyle === 'mac'"
+				ref="draggableDOMPointRef"
+				:id="draggableDOMPointID"
+				class="modal-header mac"
+				draggable="true"
+				@dragstart="draggableDOMPointDragStartFun"
+				@drop="draggableDOMPointDragDropFun"
+			>
+				<div class="modal-header-right">
+					<!-- 关闭 -->
+					<div class="modal-header-right-btn" @click="closeModal('close')">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-guanbi1"></use>
+						</svg>
+					</div>
+					<!-- 全屏 -->
+					<div class="modal-header-right-btn" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-zuidahua2"></use>
+						</svg>
+					</div>
+					<!-- 最小化 -->
+					<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-zuixiaohua4-copy"></use>
+						</svg>
+					</div>
 				</div>
-				<div class="modal-header-right-btn" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
-					<svg v-if="isFullScreen" class="icon" aria-hidden="true">
-						<use xlink:href="#icon-zuidahua"></use>
-					</svg>
-					<svg v-else class="icon" aria-hidden="true">
-						<use xlink:href="#icon-zuidahua1"></use>
-					</svg>
-				</div>
-				<div class="modal-header-right-btn" @click="closeModal('close')">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-guanbi"></use>
-					</svg>
+				<div class="modal-header-left">
+					<slot name="header-left">
+						<span class="modal-header-left-title" v-text="title"></span>
+					</slot>
 				</div>
 			</div>
-		</div>
+		</slot>
 		<div
 			ref="resizeDOMRef"
 			class="modal-body scroll-container"
@@ -89,6 +129,11 @@ const props = defineProps({
 	submitModalBeforeEvent: {
 		type: Function,
 		default: null,
+	},
+	// 窗口风格
+	modalStyle: {
+		type: String,
+		default: 'windows',
 	},
 });
 defineEmits(['update:modalShow']);

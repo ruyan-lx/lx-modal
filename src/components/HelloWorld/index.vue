@@ -1,46 +1,27 @@
 <template>
 	<div class="modal-diy-content">
 		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
-		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
-
 		<h1>HelloWorld</h1>
-
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
+		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
 	</div>
 	<div class="modal-diy-footer">
