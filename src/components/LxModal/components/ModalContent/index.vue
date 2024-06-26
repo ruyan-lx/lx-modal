@@ -1,110 +1,43 @@
 <template>
 	<div ref="draggableDOMRef" :id="modalID" class="modal-content">
-		<slot name="header">
-			<!-- Windows风格 -->
-			<div
-				v-if="modalStyle === 'windows'"
-				ref="draggableDOMPointRef"
-				:id="draggableDOMPointID"
-				class="modal-header windows"
-				draggable="true"
-				@dragstart="draggableDOMPointDragStartFun"
-				@drop="draggableDOMPointDragDropFun"
-			>
-				<div class="modal-header-left">
-					<slot name="header-left">
-						<span class="modal-header-left-title" v-text="modalTitle"></span>
-					</slot>
-				</div>
-				<div class="modal-header-right">
-					<div class="modal-header-right-btn" @click="$emit('update:modalShow', false)">
-						<svg class="icon" aria-hidden="true">
-							<use xlink:href="#icon-zuixiaohua"></use>
-						</svg>
-					</div>
-					<div class="modal-header-right-btn" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
-						<svg v-if="isFullScreen" class="icon" aria-hidden="true">
-							<use xlink:href="#icon-zuidahua"></use>
-						</svg>
-						<svg v-else class="icon" aria-hidden="true">
-							<use xlink:href="#icon-zuidahua1"></use>
-						</svg>
-					</div>
-					<div class="modal-header-right-btn" @click="closeModal('close')">
-						<svg class="icon" aria-hidden="true">
-							<use xlink:href="#icon-guanbi"></use>
-						</svg>
-					</div>
-				</div>
-			</div>
-			<!-- mac风格 -->
-			<div
-				v-else-if="modalStyle === 'mac'"
-				ref="draggableDOMPointRef"
-				:id="draggableDOMPointID"
-				class="modal-header mac"
-				draggable="true"
-				@dragstart="draggableDOMPointDragStartFun"
-				@drop="draggableDOMPointDragDropFun"
-			>
-				<div class="modal-header-right">
-					<!-- 关闭 -->
-					<div class="modal-header-right-btn">
-						<svg class="icon" aria-hidden="true" @click="closeModal('close')">
-							<use xlink:href="#icon-guanbi1"></use>
-						</svg>
-					</div>
-					<!-- 全屏 -->
-					<div class="modal-header-right-btn">
-						<svg class="icon" aria-hidden="true" @click="toggleFullScreen(draggableDOMRef, resizeDOMRef)">
-							<use xlink:href="#icon-zuidahua2"></use>
-						</svg>
-					</div>
-					<!-- 最小化 -->
-					<div class="modal-header-right-btn">
-						<svg class="icon" aria-hidden="true" @click="$emit('update:modalShow', false)">
-							<use xlink:href="#icon-zuixiaohua4-copy"></use>
-						</svg>
-					</div>
-				</div>
-				<div class="modal-header-left">
-					<slot name="header-left">
-						<span class="modal-header-left-title" v-text="modalTitle"></span>
-					</slot>
-				</div>
-			</div>
+		<slot
+			name="header"
+			draggableDOMPointRef="draggableDOMPointRef"
+			:isFullScreen="isFullScreen"
+			:modalTitle="modalTitle"
+			:draggableDOMPointID="draggableDOMPointID"
+			:onDragstart="draggableDOMPointDragStartFun"
+			:onDrop="draggableDOMPointDragDropFun"
+			:onClickMin="() => emit('update:modalShow', false)"
+			:onClickToggleFullScreen="() => toggleFullScreen(draggableDOMRef, resizeDOMRef)"
+			:onClickClose="() => closeModal('close')"
+		>
 		</slot>
 		<div
 			ref="resizeDOMRef"
 			class="modal-body scroll-container"
-			:class="{ 'modal-diy-body': footerHide }"
+			:class="{ 'modal-diy-body': isDiyFooter }"
 			:style="`width: ${width}px; height: ${height}px ;resize: ${resize ? 'auto' : 'none'}`"
 		>
 			<slot></slot>
 		</div>
-		<slot name="footer">
-			<div class="modal-footer" v-if="!footerHide">
-				<button class="modal-button" @click="closeModal('cancel')">取消</button>
-				<button class="modal-button modal-button-primary" @click="submitModal">提交</button>
-			</div>
-		</slot>
+		<slot name="footer" v-if="!isDiyFooter" :onClickSubmit="submitModal" :onClickCancel="() => closeModal('cancel')"> </slot>
 	</div>
 </template>
-<script lang="ts">
-export default {
-	name: 'ModalContent',
-};
-</script>
+
 <script setup lang="ts">
 import { getCurrentInstance, onMounted, ref } from 'vue';
 
+defineOptions({
+	name: 'ModalContent',
+});
 const props = defineProps({
 	modalTitle: {
 		type: String,
 		default: '🐽lx-modal',
 	},
-	// 是否隐藏底部按钮
-	footerHide: {
+	// 是否使用自定义的业务footer
+	isDiyFooter: {
 		type: Boolean,
 		default: false,
 	},
@@ -130,13 +63,13 @@ const props = defineProps({
 		type: Function,
 		default: null,
 	},
-	// 窗口风格
-	modalStyle: {
-		type: String,
-		default: 'windows',
+	// 业务数据
+	propsData: {
+		type: Object,
+		default: () => ({}),
 	},
 });
-defineEmits(['update:modalShow']);
+const emit = defineEmits(['update:modalShow']);
 
 // 当前组件实例对象
 const Instance = getCurrentInstance();

@@ -13,11 +13,11 @@
 				</div>
 			</div>
 			<ul v-if="data!.size > 0">
-				<li v-for="[key, value] in data" :key="key">
-					<div @click="modalShowFun(key, value)">
+				<li v-for="[key, value] in data" :key="key" @click="modalShowFun(key, value)">
+					<div>
 						{{ value._instance.attrs.modalTitle }}
 					</div>
-					<div @click="modalCloseFun(key, value)">
+					<div @click.stop="modalCloseFun(key, value)">
 						<svg class="icon" aria-hidden="true">
 							<use xlink:href="#icon-guanbi1"></use>
 						</svg>
@@ -29,16 +29,14 @@
 	</div>
 </template>
 
-<script lang="ts">
-export default {
-	name: 'LxModalBox',
-};
-</script>
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import { closeAllModal } from '../index';
 import { Drag } from '../../utils/useDragHook';
 
+defineOptions({
+	name: 'LxModalBox',
+});
 // 弹窗列表
 const data = defineModel('modelValue', { type: Map, default: new Map() });
 // 是否打开盒子
@@ -113,13 +111,14 @@ onMounted(() => {
 			list-style: none; //去掉标签默认的左边符号
 			padding: 0px;
 			margin: 0px;
-			min-height: 20rem;
+			height: 20rem;
+			overflow: auto;
 			background-color: white;
 			li {
 				list-style-type: none; //去掉标签默认的左边符号
 				padding: 5px 10px;
 				line-height: 28px;
-				border-bottom: 1px dashed #dbdbdb;
+				border-bottom: 1px dashed #eaeaea;
 				font-size: 0.8rem;
 				display: flex;
 				justify-content: space-between;

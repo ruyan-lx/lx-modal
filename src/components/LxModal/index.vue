@@ -3,20 +3,31 @@
 		<div class="modal" v-show="modalShow">
 			<div v-show="modalMaskDisplay" class="modal-mask" @click="maskClose"></div>
 			<modal-content v-bind="$attrs" @update:modalShow="minShowModal">
+				<template #header="scope">
+					<slot name="header">
+						<component :is="modalHeaderComponent" :scope="scope"></component>
+					</slot>
+				</template>
 				<slot></slot>
+				<template #footer="scope">
+					<slot name="footer">
+						<component :is="modalFooterComponent" :scope="scope"></component>
+					</slot>
+				</template>
 			</modal-content>
 		</div>
 	</transition>
 </template>
 
-<script lang="ts">
-export default {
-	name: 'LxModal',
-};
-</script>
 <script lang="ts" setup>
-import { getCurrentInstance, ref } from 'vue';
+import { getCurrentInstance, h, ref } from 'vue';
 import ModalContent from './components/ModalContent/index.vue';
+import HeaderWin from './components/HeaderWin/index.vue';
+import Footer from './components/Footer/index.vue';
+
+defineOptions({
+	name: 'LxModal',
+});
 
 const props = defineProps({
 	// 能否通过遮罩关闭弹窗
@@ -28,6 +39,14 @@ const props = defineProps({
 	modalMaskDisplay: {
 		type: Boolean,
 		default: false,
+	},
+	modalHeaderComponent: {
+		type: Object,
+		default: () => HeaderWin,
+	},
+	modalFooterComponent: {
+		type: Object,
+		default: () => Footer,
 	},
 });
 
