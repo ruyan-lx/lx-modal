@@ -4,28 +4,15 @@
 	vertical-align: -0.15em;
 	fill: currentColor;
 	overflow: hidden;
+	&:hover {
+		transform: scale(0.9);
+	}
 }
 
 .scroll-container {
 	$sb-track-color: #f7f7f7;
 	$sb-thumb-color: #bbbbbb;
 	$sb-size: 10px;
-	// 	&::-webkit-scrollbar {
-	// 		width: $sb-size;
-	// 	}
-	// 	&::-webkit-scrollbar-track {
-	// 		background: $sb-track-color;
-	// 		border-radius: 5px;
-	// 	}
-	// 	&::-webkit-scrollbar-thumb {
-	// 		background: $sb-thumb-color;
-	// 		border-radius: 5px;
-	// 	}
-	// 	@supports not selector(::-webkit-scrollbar) {
-	// 		& {
-	// 			scrollbar-color: $sb-thumb-color $sb-size;
-	// 		}
-	// 	}
 	&::-webkit-scrollbar {
 		width: 10px;
 		background: $sb-track-color;

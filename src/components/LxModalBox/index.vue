@@ -89,7 +89,6 @@ onMounted(() => {
 		left: 1rem;
 		background-color: #f7f7f7;
 		min-width: 20rem;
-		height: 20rem;
 		overflow: auto;
 		box-shadow: 0 0 5px 3px #e3e3e3;
 		border-radius: 12px;
@@ -100,6 +99,7 @@ onMounted(() => {
 			justify-content: space-between;
 			align-items: center;
 			padding-top: 4px;
+			border-bottom: 1px solid #dfdfdf;
 			.allclose-div {
 				padding-left: 6px;
 				cursor: pointer;
@@ -113,11 +113,13 @@ onMounted(() => {
 			list-style: none; //去掉标签默认的左边符号
 			padding: 0px;
 			margin: 0px;
+			min-height: 20rem;
+			background-color: white;
 			li {
 				list-style-type: none; //去掉标签默认的左边符号
 				padding: 5px 10px;
 				line-height: 28px;
-				border-bottom: 1px solid #c2c2c2;
+				border-bottom: 1px dashed #dbdbdb;
 				font-size: 0.8rem;
 				display: flex;
 				justify-content: space-between;
@@ -133,6 +135,8 @@ onMounted(() => {
 		&-nodata {
 			text-align: center;
 			line-height: 14rem;
+			min-height: 20rem;
+			background-color: white;
 		}
 	}
 }

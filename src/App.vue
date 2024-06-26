@@ -18,9 +18,8 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue';
 import Helloworld from './components/HelloWorld/index.vue';
-// import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from './components';
-
-import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from 'lx-modal';
+import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from './components/index.ts';
+// import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from 'lx-modal';
 
 // 现在用h\render\defineComponent\creatApp用的飞起
 const app = defineComponent({
@@ -36,7 +35,7 @@ function openModalFun() {
 		// maskClosable: true,
 		// modalMaskDisplay: true,
 		footerHide: false,
-		// modalStyle: 'mac',
+		modalStyle: 'mac',
 		submitModalBeforeEvent: () => {
 			console.log('==11111claabak==');
 			return true;
