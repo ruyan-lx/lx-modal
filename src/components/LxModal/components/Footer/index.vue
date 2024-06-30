@@ -15,6 +15,11 @@ const props = defineProps({
 		default: () => ({}),
 	},
 });
+
+defineExpose({
+	onClickCancel: props.scope.onClickCancel,
+	onClickSubmit: props.scope.onClickSubmit,
+});
 </script>
 
 <style lang="scss" scoped>

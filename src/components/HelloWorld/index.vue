@@ -7,7 +7,7 @@
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
-		<h1></h1>
+		<h1 v-text="propsData.msg"></h1>
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
 		<h1>HelloWorld</h1>
@@ -30,18 +30,27 @@
 	</div>
 </template>
 
-<script lang="ts">
-export default {
-	name: 'HelloWorld',
-};
-</script>
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue';
 
+defineOptions({
+	name: 'HelloWorld',
+});
+
+defineProps({
+	propsData: {
+		type: Object,
+		default: () => ({}),
+	},
+});
 const Instance = getCurrentInstance();
 function cancelFun() {
 	Instance?.appContext.config.globalProperties.unmountModal();
 }
+
+defineExpose({
+	hhh: 'hhhhhhhhhhhhhh',
+});
 </script>
 
 <style scoped lang="scss">

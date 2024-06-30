@@ -196,11 +196,10 @@ function closeModal(type: string) {
 	switch (type) {
 		case 'cancel':
 		case 'close':
-		case 'submit':
-			{
-				Instance?.appContext.config.globalProperties.unmountModal();
-			}
+		case 'submit': {
+			Instance?.appContext.config.globalProperties.unmountModal();
 			break;
+		}
 		default:
 			break;
 	}
