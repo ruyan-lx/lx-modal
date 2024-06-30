@@ -5,19 +5,10 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [vue()],
-	css: {
-		preprocessorOptions: {
-			scss: {
-				// 这里可以设置全局变量等 SCSS 配置
-				additionalData: '@import "@/assets/scss/globalVar.scss";',
-			},
-		},
-	},
 	build: {
-		outDir: 'lx-modal', //输出文件名称
+		outDir: 'dist', //输出文件名称
 		lib: {
-			// Could also be a dictionary or array of multiple entry points
-			entry: 'src/components/index.ts',
+			entry: path.resolve(__dirname, './src/components/index.ts'), //指定组件编译入口文件,
 			name: 'lxmodal',
 			fileName: 'lxmodal',
 		},

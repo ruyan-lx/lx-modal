@@ -18,10 +18,7 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue';
 import Helloworld from './components/HelloWorld/index.vue';
-// import HeaderWin from './components/LxModal/components/HeaderWin/index.vue';
-import HeaderMac from './components/LxModal/components/HeaderMac/index.vue';
-import ModalFooter from './components/LxModal/components/Footer/index.vue';
-import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from './components/index.ts';
+import { openModal, ModalInstanceMap, closeAllModal, LxModalBox, HeaderMac } from './components/index.ts';
 // import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from 'lx-modal';
 
 // 现在用h\render\defineComponent\creatApp用的飞起
@@ -48,7 +45,7 @@ function openModalFun() {
 		submitModalAfterEvent: () => {
 			console.log('==11111claabak after==');
 		},
-		// modalHeaderComponent: HeaderMac,
+		modalHeaderComponent: HeaderMac,
 		// modalFooterComponent: ModalFooter,
 		// isDiyFooter: true,
 	}).then((_data: any) => {

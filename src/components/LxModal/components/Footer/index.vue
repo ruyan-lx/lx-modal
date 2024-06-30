@@ -24,14 +24,12 @@ defineExpose({
 
 <style lang="scss" scoped>
 .modal-footer {
-	height: 24px;
 	padding: 4px;
 	border-top: 1px solid #e4e7ed;
 	text-align: right;
 	.modal-button {
 		padding: 4px;
 		margin: 0 4px;
-		line-height: 1em;
 		border: 1px solid #dcdfe6;
 		outline: none;
 		display: inline-block;
@@ -40,7 +38,6 @@ defineExpose({
 		background-color: #fff;
 		transition: 0.1s;
 		width: 4rem;
-		height: 1.4rem;
 		&:hover {
 			color: #409eff;
 			border-color: #c6e2ff;

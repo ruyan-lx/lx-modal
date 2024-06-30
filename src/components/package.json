@@ -1,0 +1,21 @@
+{
+	"name": "lx-modal",
+	"author": "ruyan-lx",
+	"description": "一个基于vue3开发的函数式弹窗组件",
+	"private": false,
+	"version": "0.31.2",
+	"main": "lxmodal.umd.js",
+	"module": "lxmodal.mjs",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"vue3",
+		"vite",
+		"lx-modal",
+		"组件",
+		"弹窗",
+		"函数式组件"
+	],
+	"license": "ISC"
+}

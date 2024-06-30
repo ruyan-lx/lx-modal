@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance, h, ref } from 'vue';
+import { getCurrentInstance, ref } from 'vue';
 import ModalContent from './components/ModalContent/index.vue';
 import HeaderWin from './components/HeaderWin/index.vue';
 import Footer from './components/Footer/index.vue';

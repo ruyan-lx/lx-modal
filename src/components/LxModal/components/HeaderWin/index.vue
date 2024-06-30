@@ -39,7 +39,7 @@
 defineOptions({
 	name: 'HeaderWin',
 });
-const props = defineProps({
+defineProps({
 	scope: {
 		type: Object,
 		default: () => ({}),

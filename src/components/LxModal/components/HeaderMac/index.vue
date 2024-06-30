@@ -36,7 +36,7 @@
 defineOptions({
 	name: 'HeaderMac',
 });
-const props = defineProps({
+defineProps({
 	scope: {
 		type: Object,
 		default: () => ({}),

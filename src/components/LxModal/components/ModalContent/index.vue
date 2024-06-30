@@ -51,7 +51,7 @@ const props = defineProps({
 	},
 	zIndex: {
 		type: String,
-		default: '100',
+		default: '1000',
 	},
 	// 弹窗尺寸可拖动
 	resize: {
@@ -126,7 +126,7 @@ function toggleFullScreen(draggableDOM: HTMLElement, resizeDOM: HTMLElement) {
 // 拖拽需要移动的元素，是整个modal弹窗盒子
 const draggableDOMRef = ref();
 // 鼠标按住的元素，是弹窗标题部分header盒子元素
-const draggableDOMPointRef = ref();
+// const draggableDOMPointRef = ref();
 // 弹窗内容部分的元素，通过他改变弹窗大小
 const resizeDOMRef = ref();
 // 拖拽时触发的第一个事件对象
