@@ -25,6 +25,7 @@ const props = defineProps({
 	text-align: right;
 	.modal-button {
 		padding: 4px;
+		margin: 0 4px;
 		line-height: 1em;
 		border: 1px solid #dcdfe6;
 		outline: none;

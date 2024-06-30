@@ -63,6 +63,11 @@ const props = defineProps({
 		type: Function,
 		default: null,
 	},
+	// 提交后的狗子函数
+	submitModalAfterEvent: {
+		type: Function,
+		default: null,
+	},
 	// 业务数据
 	propsData: {
 		type: Object,
@@ -204,9 +209,18 @@ function closeModal(type: string) {
 // 提交前的狗子，不是函数则直接关闭，是函数就先执行狗子函数，传进来的狗子函数返回false就不关闭弹窗了，返回true和其他值则关闭弹窗；
 async function submitModal() {
 	if (typeof props.submitModalBeforeEvent !== 'function') return closeModal('submit');
-	await new Promise<boolean>(() => {
+	await new Promise<boolean>((resolve) => {
 		const bool = props.submitModalBeforeEvent();
-		if (bool) return closeModal('submit');
+		resolve(bool);
+	}).then((result) => {
+		if (result) {
+			if (typeof props.submitModalAfterEvent === 'function') {
+				props.submitModalAfterEvent();
+			}
+			return closeModal('submit');
+		} else {
+			// 不關閉
+		}
 	});
 }
 

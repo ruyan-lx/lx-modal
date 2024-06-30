@@ -20,7 +20,7 @@ import { defineComponent, h } from 'vue';
 import Helloworld from './components/HelloWorld/index.vue';
 // import HeaderWin from './components/LxModal/components/HeaderWin/index.vue';
 import HeaderMac from './components/LxModal/components/HeaderMac/index.vue';
-// import ModalFooter from './components/LxModal/components/Footer/index.vue';
+import ModalFooter from './components/LxModal/components/Footer/index.vue';
 import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from './components/index.ts';
 // import { openModal, ModalInstanceMap, closeAllModal, LxModalBox } from 'lx-modal';
 
@@ -42,8 +42,11 @@ function openModalFun() {
 		modalMaskDisplay: true,
 		footerHide: true,
 		submitModalBeforeEvent: () => {
-			console.log('==11111claabak==');
+			console.log('==11111claabak before==');
 			return true;
+		},
+		submitModalAfterEvent: () => {
+			console.log('==11111claabak after==');
 		},
 		// modalHeaderComponent: HeaderMac,
 		// modalFooterComponent: ModalFooter,
