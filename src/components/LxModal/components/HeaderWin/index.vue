@@ -42,7 +42,17 @@ defineOptions({
 defineProps({
 	scope: {
 		type: Object,
-		default: () => ({}),
+		default: () => ({
+			draggableDOMPointRef: '',
+			isFullScreen: false,
+			modalTitle: '',
+			draggableDOMPointID: '',
+			onDragstart: () => {},
+			onDrop: () => {},
+			onClickMin: () => {},
+			onClickToggleFullScreen: () => {},
+			onClickClose: () => {},
+		}),
 	},
 });
 </script>

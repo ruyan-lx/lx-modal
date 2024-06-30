@@ -48,14 +48,11 @@
 }
 
 .modal-diy-body {
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: space-between;
 	$bottom-height: 24px;
-	:deep(.modal-diy-content) {
+	& > :deep(.modal-diy-content) {
 		margin-bottom: calc($bottom-height + 16px);
 	}
-	:deep(.modal-diy-footer) {
+	& > :deep(.modal-diy-footer) {
 		position: absolute;
 		bottom: 0;
 		left: 0;

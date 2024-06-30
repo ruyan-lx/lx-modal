@@ -47,7 +47,7 @@ function openModalFun() {
 		},
 		modalHeaderComponent: HeaderMac,
 		// modalFooterComponent: ModalFooter,
-		// isDiyFooter: true,
+		isDiyFooter: true,
 	}).then((_data: any) => {
 		// console.log('==打开成功==', data);
 		console.log('==ModalInstanceMap==', ModalInstanceMap.value);

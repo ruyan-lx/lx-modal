@@ -58,4 +58,12 @@ defineExpose({
 	padding: 4px;
 	text-align: right;
 }
+.modal-body.scroll-container.modal-diy-body {
+	.modal-diy-footer {
+		height: 50px;
+	}
+	.modal-diy-content {
+		margin-bottom: 100px;
+	}
+}
 </style>
