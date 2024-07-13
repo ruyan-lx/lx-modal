@@ -35,9 +35,6 @@ function openModalFun() {
 		width: 600,
 		height: 400,
 		modalTitle: '弹窗标题',
-		maskClosable: true,
-		modalMaskDisplay: true,
-		footerHide: true,
 		submitModalBeforeEvent: () => {
 			console.log('==11111claabak before==');
 			return true;

@@ -10,7 +10,7 @@ import '@/assets/iconfont.js';
 // 按需引入
 export { openModal, closeAllModal, ModalInstanceMap, LxModal, LxModalBox, HeaderMac, HeaderWin, ModalFooter };
 
-const components: Component[] = [LxModal, LxModalBox];
+const components: Component[] = [LxModal, LxModalBox, HeaderMac, HeaderWin, ModalFooter];
 
 // 全量引入
 export default {

@@ -2,11 +2,15 @@
 	"name": "lx-modal",
 	"author": "",
 	"private": true,
-	"main": "dist/lxmodal.umd.js",
-	"module": "dist/lxmodal.mjs",
+	"main": "./dist/lxmodal.umd.js",
+	"module": "./dist/lxmodal.esm.js",
+	"types": "./dist/types/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "vite",
-		"build": "vue-tsc && vite build",
+		"build": "vue-tsc && vite build && node ./nodescript/npmBuildCopyPackageJson.js",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -18,6 +22,7 @@
 		"sass-loader": "^14.2.1",
 		"typescript": "^5.2.2",
 		"vite": "^5.2.0",
+		"vite-plugin-dts": "^3.9.1",
 		"vite-plugin-svg-icons": "^2.0.1",
 		"vue-tsc": "^2.0.6"
 	}

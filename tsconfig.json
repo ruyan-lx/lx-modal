@@ -7,15 +7,18 @@
 		"skipLibCheck": true,
 
 		"declaration": true, // 生成类型声明文件
+		"declarationMap": false,
+		"emitDeclarationOnly": true,
 		"outDir": "./dist", // 编译输出目录
 		"rootDir": "./src", // 源文件目录
 
 		/* Bundler mode */
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
 		"jsx": "preserve",
 
 		/* Linting */
@@ -24,6 +27,6 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-	"references": [{ "path": "./tsconfig.node.json" }]
+	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"exclude": ["node_modules", "dist"] // 排除不需要编译的文件
 }

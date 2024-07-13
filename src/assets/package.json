@@ -3,12 +3,10 @@
 	"author": "ruyan-lx",
 	"description": "一个基于vue3开发的函数式弹窗组件",
 	"private": false,
-	"version": "0.31.2",
-	"main": "lxmodal.umd.js",
-	"module": "lxmodal.mjs",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
+	"version": "0.31.6",
+	"main": "./lxmodal.umd.js",
+	"module": "./lxmodal.es.js",
+	"types": "./types/index.d.ts",
 	"keywords": [
 		"vue3",
 		"vite",

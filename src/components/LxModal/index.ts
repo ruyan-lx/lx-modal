@@ -1,16 +1,17 @@
 import LxModal from './index.vue';
 import { type Component, type App, h, ref } from 'vue';
 import { createApp } from 'vue';
+import type { I_openModalPropsConfig } from './type.d.ts';
 
 function generateUniqueId(): string {
 	return Math.random().toString(36).substr(2, 9); // 使用随机数生成9位36进制字符串
 }
 
 // 弹窗实例集合
-export let ModalInstanceMap = ref(new Map());
+export let ModalInstanceMap = ref<Map<string | number, any>>(new Map());
 
 // 一键关闭所有弹窗
-export function closeAllModal() {
+export function closeAllModal(): void {
 	if (ModalInstanceMap.value.size === 0) return;
 	ModalInstanceMap.value.forEach((app) => {
 		app.config.globalProperties.unmountModal();
@@ -18,7 +19,7 @@ export function closeAllModal() {
 }
 
 // 打开弹窗
-export function openModal(slot: string | Component, config: { [k: string]: any }): Promise<any> {
+export function openModal(slot: string | Component, config: I_openModalPropsConfig<any>): Promise<any> {
 	return new Promise((resolve) => {
 		const uniqueId: string = generateUniqueId();
 		const element = document.createElement('div');
