@@ -1,8 +1,12 @@
 interface DragConfig {
 	el: string; // 元素选择器
 	adsorb: boolean; // 是否启用吸附效果
+	relativeToEl?: string; // 新增属性
 }
 
+/*
+ * @Description: 传入一个元素选择器，实现拖拽效果
+ */
 export class Drag {
 	private element: HTMLElement | null;
 	private startX: number = 0;
@@ -18,6 +22,16 @@ export class Drag {
 			this.element.addEventListener('mousedown', this.onMouseDown.bind(this));
 			document.addEventListener('mousemove', this.onMouseMove.bind(this), { capture: true });
 			document.addEventListener('mouseup', this.onMouseUp.bind(this), { capture: true });
+
+			// 处理让悬浮球相对于某个元素位置定位
+			if (config.relativeToEl) {
+				const fthis: any = this;
+				setTimeout(() => {
+					const relativeRect = document.querySelector(<string>config.relativeToEl)!.getBoundingClientRect();
+					fthis.element.style.left = relativeRect.right - fthis.element.clientWidth - 5 + 'px';
+					fthis.element.style.top = relativeRect.bottom - fthis.element.clientHeight - 5 + 'px';
+				}, 0);
+			}
 		} else {
 			console.error(`Element with selector '${config.el}' not found.`);
 		}

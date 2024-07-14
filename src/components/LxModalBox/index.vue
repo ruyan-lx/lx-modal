@@ -1,31 +1,35 @@
 <template>
 	<div class="lx-modal-box">
-		<div v-show="!isShowBox" id="box1" class="lx-modal-box-min" @dblclick="isShowBox = true">
-			<span v-text="data!.size"></span>
-		</div>
-		<div v-show="isShowBox" id="box2" class="lx-modal-box-max">
-			<div class="header-box">
-				<div class="allclose-div" @click="closeAllModal">关闭所有</div>
-				<div class="close-div" @click="isShowBox = false">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-guanbi"></use>
-					</svg>
-				</div>
+		<Transition>
+			<div v-show="!isShowBox" id="FloatingBall" class="lx-modal-box-min" @dblclick="isShowBox = true">
+				<span v-text="data!.size"></span>
 			</div>
-			<ul v-if="data!.size > 0">
-				<li v-for="[key, value] in data" :key="key" @click="modalShowFun(key, value)">
-					<div>
-						{{ value._instance.attrs.modalTitle }}
-					</div>
-					<div @click.stop="modalCloseFun(key, value)">
+		</Transition>
+		<Transition>
+			<div v-if="isShowBox" id="box2" class="lx-modal-box-max">
+				<div class="header-box">
+					<div class="allclose-div" @click="closeAllModal">关闭所有</div>
+					<div class="close-div" @click="isShowBox = false">
 						<svg class="icon" aria-hidden="true">
-							<use xlink:href="#icon-guanbi1"></use>
+							<use xlink:href="#icon-guanbi"></use>
 						</svg>
 					</div>
-				</li>
-			</ul>
-			<div v-else class="lx-modal-box-max-nodata">你没有未关闭的弹窗~</div>
-		</div>
+				</div>
+				<ul v-if="data!.size > 0">
+					<li v-for="[key, value] in data" :key="key" @click="modalShowFun(key, value)">
+						<div>
+							{{ value._instance.attrs.modalTitle }}
+						</div>
+						<div @click.stop="modalCloseFun(key, value)">
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#icon-guanbi1"></use>
+							</svg>
+						</div>
+					</li>
+				</ul>
+				<div v-else class="lx-modal-box-max-nodata">你没有未关闭的弹窗~</div>
+			</div>
+		</Transition>
 	</div>
 </template>
 
@@ -41,6 +45,12 @@ defineOptions({
 const data = defineModel('modelValue', { type: Map, default: new Map() });
 // 是否打开盒子
 const isShowBox: any = defineModel('showbox', { type: Boolean, default: false });
+const props = defineProps({
+	relativeToEl: {
+		type: String,
+		default: 'body',
+	},
+});
 
 function modalShowFun(_key: any, value: { _instance: { exposed: { minShowModal: () => void } } }) {
 	value._instance.exposed.minShowModal();
@@ -53,19 +63,18 @@ function modalCloseFun(_key: any, value: { config: { globalProperties: { unmount
 defineExpose({});
 
 onMounted(() => {
-	new Drag({ el: '#box1', adsorb: true });
+	new Drag({ el: '#FloatingBall', adsorb: true, relativeToEl: props.relativeToEl });
 });
 </script>
 
 <style scoped lang="scss">
 .lx-modal-box {
 	.lx-modal-box-min {
-		position: fixed;
 		background-color: #f7f7f7;
-		width: 50px;
-		height: 50px;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
 		box-shadow: 0 0 5px 3px #e3e3e3;
-		border-radius: 12px;
 		cursor: pointer;
 		position: absolute;
 		bottom: 1rem;

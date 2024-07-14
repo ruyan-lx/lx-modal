@@ -2,7 +2,7 @@
 	<button @click="openModalFun">打开弹窗</button>
 	<button @click="closeAllModal">关闭所有弹窗</button>
 	<button @click="showOneModal">显示隐藏全部弹窗</button>
-	<lx-modal-box v-model="ModalInstanceMap"> </lx-modal-box>
+	<lx-modal-box v-model="ModalInstanceMap" relativeToEl="#content"> </lx-modal-box>
 	<div id="content">
 		<p></p>
 		<p>123</p>
@@ -44,7 +44,7 @@ function openModalFun() {
 		},
 		modalHeaderComponent: HeaderMac,
 		// modalFooterComponent: ModalFooter,
-		isDiyFooter: true,
+		// isDiyFooter: true,
 	}).then((_data: any) => {
 		// console.log('==打开成功==', data);
 		console.log('==ModalInstanceMap==', ModalInstanceMap.value);
@@ -57,4 +57,8 @@ function showOneModal() {
 	});
 }
 </script>
-<style scoped></style>
+<style scoped>
+#content {
+	background-color: rgb(224, 224, 224);
+}
+</style>
