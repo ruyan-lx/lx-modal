@@ -48,7 +48,7 @@ const isShowBox: any = defineModel('showbox', { type: Boolean, default: false })
 const props = defineProps({
 	relativeToEl: {
 		type: String,
-		default: 'body',
+		default: null,
 	},
 });
 
@@ -76,10 +76,10 @@ onMounted(() => {
 		border-radius: 50%;
 		box-shadow: 0 0 5px 3px #e3e3e3;
 		cursor: pointer;
-		position: absolute;
+		position: fixed;
 		bottom: 1rem;
 		left: 1rem;
-		z-index: 0;
+		z-index: 100;
 		& > span {
 			position: absolute;
 			top: 50%;
@@ -99,7 +99,7 @@ onMounted(() => {
 		overflow: auto;
 		box-shadow: 0 0 5px 3px #e3e3e3;
 		border-radius: 12px;
-		z-index: 0;
+		z-index: 100;
 		.header-box {
 			color: #b2b2b2;
 			display: flex;
