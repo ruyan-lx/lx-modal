@@ -15,10 +15,10 @@
 						</svg>
 					</div>
 				</div>
-				<ul v-if="data!.size > 0">
+				<ul v-if="data.size > 0">
 					<li v-for="[key, value] in data" :key="key" @click="modalShowFun(key, value)">
 						<div>
-							{{ value?._instance?.attrs?.modalTitle ?? '默认标题' }}
+							{{ value._component.props.modalTitle ?? '默认标题' }}
 						</div>
 						<div @click.stop="modalCloseFun(key, value)">
 							<svg class="icon" aria-hidden="true">
@@ -52,15 +52,13 @@ const props = defineProps({
 	},
 });
 
-function modalShowFun(_key: any, value: { _instance: { exposed: { minShowModal: () => void } } }) {
-	value._instance.exposed.minShowModal();
+function modalShowFun(_key: any, value: any) {
+	value.config.globalProperties.minShowModal();
 }
 
 function modalCloseFun(_key: any, value: { config: { globalProperties: { unmountModal: () => void } } }) {
 	value.config.globalProperties.unmountModal();
 }
-
-defineExpose({});
 
 onMounted(() => {
 	new Drag({ el: '#FloatingBall', adsorb: true, relativeToEl: props.relativeToEl });

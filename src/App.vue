@@ -53,8 +53,8 @@ function openModalFun() {
 }
 
 function showOneModal() {
-	ModalInstanceMap.value.forEach((value: { _instance: { exposed: { minShowModal: () => void } } }, _key: any) => {
-		value._instance.exposed.minShowModal();
+	ModalInstanceMap.value.forEach((value: any, _key: any) => {
+		value.config.globalProperties.minShowModal();
 	});
 }
 </script>

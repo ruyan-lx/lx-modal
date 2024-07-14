@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance, ref } from 'vue';
+import { getCurrentInstance, ref, nextTick } from 'vue';
 import ModalContent from './components/ModalContent/index.vue';
 import HeaderWin from './components/HeaderWin/index.vue';
 import Footer from './components/Footer/index.vue';
@@ -67,9 +67,8 @@ function minShowModal(_value: boolean) {
 	modalShow.value = !modalShow.value;
 }
 
-defineExpose({
-	modalShow,
-	minShowModal,
+nextTick(() => {
+	Instance!.appContext.config.globalProperties.minShowModal = minShowModal;
 });
 </script>
 
