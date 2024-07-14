@@ -41,7 +41,7 @@ export function openModal(slot: string | Component, config: I_openModalPropsConf
 		app.mount(element);
 		// 每个弹窗实例绑定自己的关闭函数
 		app.config.globalProperties.unmountModal = function () {
-			ModalInstanceMap.value.get(uniqueId)._instance.exposed.modalShow.value = false;
+			// ModalInstanceMap.value.get(uniqueId)._instance.exposed.modalShow.value = false;
 			document.body.style.overflow = 'auto';
 			ModalInstanceMap.value.get(uniqueId).unmount();
 			element.remove();
