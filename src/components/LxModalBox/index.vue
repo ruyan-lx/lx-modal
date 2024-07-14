@@ -18,7 +18,7 @@
 				<ul v-if="data!.size > 0">
 					<li v-for="[key, value] in data" :key="key" @click="modalShowFun(key, value)">
 						<div>
-							{{ value._instance.attrs.modalTitle }}
+							{{ value?._instance?.attrs?.modalTitle ?? '默认标题' }}
 						</div>
 						<div @click.stop="modalCloseFun(key, value)">
 							<svg class="icon" aria-hidden="true">
