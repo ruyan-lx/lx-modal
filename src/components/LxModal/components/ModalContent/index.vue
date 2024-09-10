@@ -49,10 +49,6 @@ const props = defineProps({
 		type: Number,
 		default: 250,
 	},
-	zIndex: {
-		type: String,
-		default: '1000',
-	},
 	// 弹窗尺寸可拖动
 	resize: {
 		type: Boolean,
