@@ -1,6 +1,6 @@
 <template>
 	<transition>
-		<div class="modal" v-show="modalShow">
+		<div class="modal" v-show="modalShow" :style="{ zIndex: modalIndex++ }">
 			<div v-show="modalMaskDisplay" class="modal-mask" @click="maskClose"></div>
 			<modal-content v-bind="$attrs" @update:modalShow="minShowModal">
 				<template #header="scope">
@@ -70,6 +70,8 @@ function minShowModal(_value: boolean) {
 nextTick(() => {
 	Instance!.appContext.config.globalProperties.minShowModal = minShowModal;
 });
+
+const modalIndex = ref<number>(2000);
 </script>
 
 <style scoped lang="scss">
@@ -82,7 +84,6 @@ nextTick(() => {
 		width: 100vw;
 		height: 100vh;
 		position: absolute;
-		z-index: 99;
 		background-color: rgba($color: #000000, $alpha: 0.4);
 	}
 }
